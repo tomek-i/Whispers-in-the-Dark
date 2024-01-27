@@ -7,10 +7,10 @@ export enum CharacterType {
 }
 
 export enum States {
-  Default,
-  Poisoned,
-  Drunk,
-  Dead,
+  Default = "alive",
+  Poisoned = "poisoned",
+  Drunk = "drunk",
+  Dead = "dead",
 }
 export enum Role {
   Default = "default",

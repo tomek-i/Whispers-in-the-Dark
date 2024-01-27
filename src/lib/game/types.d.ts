@@ -6,6 +6,7 @@ export type PlayerAllocation = {
 }
 export type Ability = {
   description: string
+  Use: (target: Player) => void
 }
 export type DemonCharacterClassMap = Record<DemonCharacters, new (game: Game) => Demon>
 export type MinionCharacterClassMap = Record<MinionCharacters, new (game: Game) => Minion>
