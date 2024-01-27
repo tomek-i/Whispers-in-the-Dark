@@ -1,14 +1,10 @@
-<img align="right" width="360px" height="410px" src="./.github/assets/project-logo-vertical.png">
+<img align="right" width="360px" height="410px" src="./.github/assets/project-logo-vertical.jpg">
 
-# Next.js Enterprise Boilerplate </br> [![GitHub Actions Workflow Status][check-workflow-badge]][check-workflow-badge-link] [![GitHub License][github-license-badge]][github-license-badge-link] [![GitHub contributors][github-contributors-badge]][github-contributors-badge-link] [![Discord][discord-badge]][discord-badge-link] [![Blazity][made-by-blazity-badge]][made-by-blazity-badge-link]
+# Blood on the Clock </br>
 
-Welcome to the _Next.js Enterprise Boilerplate_, an open-source template for enterprise projects! It's loaded with features that'll help you build a high-performance, maintainable, and enjoyable app. We've done all the heavy lifting for you, so sit back, relax, and get ready to conquer the world with your incredible app! 🌍
-
-> [!NOTE] > **Blazity** is a group of Next.js/Jamstack/Headless experts. Contact us at [contact@blazity.com](https://blazity.com) if you’d like to talk about your project or just to have a chat with us
+Welcome to the _Blood on the Clock_, an open-source template for the game. 🌍
 
 ## Features
-
-With this template, you get all the awesomeness you need:
 
 - 🏎️ **[Next.js](https://nextjs.org/)** - Fast by default, with config optimized for performance (with **App Directory**)
 - 💅 **[Tailwind CSS](https://tailwindcss.com/)** - A utility-first CSS framework for rapid UI development
@@ -27,6 +23,7 @@ With this template, you get all the awesomeness you need:
 - **[Health checks](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)** - Kubernetes-compatible for robust deployments
 - **[Radix UI](https://www.radix-ui.com/)** - Headless UI components for endless customization
 - **[CVA](http://cva.style/)** - Create a consistent, reusable, and atomic design system
+- **[TV](https://www.tailwind-variants.org/)** - Create a consistent, reusable, and atomic design system
 - **[Renovate BOT](https://www.whitesourcesoftware.com/free-developer-tools/renovate)** - Auto-updating dependencies, so you can focus on coding
 - **[Patch-package](https://www.npmjs.com/package/patch-package)** - Fix external dependencies without losing your mind
 - **Components coupling and cohesion graph** - A tool for managing component relationships
@@ -36,28 +33,28 @@ With this template, you get all the awesomeness you need:
 
 ## Table of Contents
 
-- [Next.js Enterprise Boilerplate](#nextjs-enterprise-boilerplate)
+- [Blood on the Clock ](#blood-on-the-clock-)
   - [Features](#features)
   - [Table of Contents](#table-of-contents)
-  - [Getting Started](#-getting-started)
-  - [Deployment](#-deployment)
-  - [Scripts Overview](#-scripts-overview)
-  - [Coupling Graph](#-coupling-graph)
-  - [Testing](#-testing)
+  - [🎯 Getting Started](#-getting-started)
+  - [🚀 Deployment](#-deployment)
+  - [📃 Scripts Overview](#-scripts-overview)
+  - [🔗 Coupling Graph](#-coupling-graph)
+  - [🧪 Testing](#-testing)
     - [Running Tests](#running-tests)
     - [Acceptance Tests](#acceptance-tests)
     - [Smoke Testing](#smoke-testing)
-  - [Styling and Design System](#-styling-and-design-system)
+  - [🎨 Styling and Design System](#-styling-and-design-system)
     - [CVA - A New Approach to Variants](#cva---a-new-approach-to-variants)
-  - [State Management](#-state-management)
+  - [💾 State Management](#-state-management)
     - [Zustand](#zustand)
     - [Jotai](#jotai)
     - [Recoil](#recoil)
-  - [ChatGPT Code Review](#-chatgpt-code-review)
-  - [Environment Variables handling](#-environment-variables-handling)
-  - [Contribution](#-contribution)
+  - [🤖 ChatGPT Code Review](#-chatgpt-code-review)
+  - [💻 Environment Variables handling](#-environment-variables-handling)
+  - [🤝 Contribution](#-contribution)
   - [Support](#support)
-  - [License](#-license)
+  - [📜 License](#-license)
   - [Contributors](#contributors)
 
 ## 🎯 Getting Started
@@ -68,7 +65,7 @@ To get started with this boilerplate, follow these steps:
 
 ```bash
 ## Don't forget to ⭐ star and fork it first :)
-git clone https://github.com/<your_username)/next-enterprise.git
+git clone https://github.com/tomek-i/BloodOnTheClock.git
 ```
 
 2. Install the dependencies:
@@ -94,9 +91,7 @@ pre-commit install -t commit-msg
 
 ## 🚀 Deployment
 
-Easily deploy your Next.js app with [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=github&utm_campaign=next-enterprise) by clicking the button below:
-
-[![Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/Blazity/next-enterprise)
+//TODO: add deployment steps
 
 ## 📃 Scripts Overview
 
@@ -116,6 +111,7 @@ The following scripts are available in the `package.json`:
 - `e2e:headless`: Runs end-to-end tests in headless mode
 - `e2e:ui`: Runs end-to-end tests with UI
 - `format`: Formats the code with Prettier
+- `plop`: Runs plop to assist generating new files
 - `postinstall`: Applies patches to external dependencies
 - `preinstall`: Ensures the project is installed with Yarn
 - `coupling-graph`: **Generates a coupling and cohesion graph for the components**
@@ -264,13 +260,7 @@ Contributions are always welcome! To contribute, please follow these steps:
 
 ## Support
 
-If you're looking for help or simply want to share your thoughts about the project, we encourage you to join our Discord community. Here's the link: [https://blazity.com/discord](https://blazity.com/discord). It's a space where we exchange ideas and help one another. Everyone's input is appreciated, and we look forward to welcoming you.
-
-<br />
-<a href="https://discord.gg/fyWtyNKmfX" style="width: 100%; display: flex; justify-content: center;">
-  <img src="https://discordapp.com/api/guilds/1111676875782234175/widget.png?style=banner2" alt="Blazity Discord Banner"/>
-</a>
-<br />
+If you're looking for help or simply want to share your thoughts about the project, we encourage you to join.
 
 ## 📜 License
 
@@ -281,24 +271,6 @@ This project is licensed under the MIT License. For more information, see the [L
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
-<table>
-  <tbody>
-    <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://bstefanski.com/"><img src="https://avatars.githubusercontent.com/u/28964599?v=4?s=100" width="100px;" alt="Bart Stefanski"/><br /><sub><b>Bart Stefanski</b></sub></a><br /><a href="https://github.com/Blazity/next-enterprise/commits?author=bmstefanski" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jjablonski-it"><img src="https://avatars.githubusercontent.com/u/51968772?v=4?s=100" width="100px;" alt="Jakub Jabłoński"/><br /><sub><b>Jakub Jabłoński</b></sub></a><br /><a href="#infra-jjablonski-it" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://neg4n.dev/"><img src="https://avatars.githubusercontent.com/u/57688858?v=4?s=100" width="100px;" alt="Igor Klepacki"/><br /><sub><b>Igor Klepacki</b></sub></a><br /><a href="https://github.com/Blazity/next-enterprise/commits?author=neg4n" title="Documentation">📖</a></td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td align="center" size="13px" colspan="7">
-        <img src="https://raw.githubusercontent.com/all-contributors/all-contributors-cli/1b8533af435da9854653492b1327a23a4dbd0a10/assets/logo-small.svg">
-          <a href="https://all-contributors.js.org/docs/en/bot/usage">Add your contributions</a>
-        </img>
-      </td>
-    </tr>
-  </tfoot>
-</table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
@@ -306,14 +278,3 @@ This project is licensed under the MIT License. For more information, see the [L
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 <!-- Badges and links -->
-
-[check-workflow-badge]: https://img.shields.io/github/actions/workflow/status/blazity/next-enterprise/check.yml?label=check
-[github-license-badge]: https://img.shields.io/github/license/blazity/next-enterprise?link=https%3A%2F%2Fgithub.com%2FBlazity%2Fnext-enterprise%2Fblob%2Fmain%2FLICENSE
-[github-contributors-badge]: https://img.shields.io/github/contributors/blazity/next-enterprise?link=https%3A%2F%2Fgithub.com%2FBlazity%2Fnext-enterprise%2Fgraphs%2Fcontributors
-[discord-badge]: https://img.shields.io/discord/1111676875782234175?color=7b8dcd&link=https%3A%2F%2Fblazity.com%2Fdiscord
-[made-by-blazity-badge]: https://img.shields.io/badge/made_by-Blazity-blue?color=FF782B&link=https://blazity.com/
-[check-workflow-badge-link]: https://github.com/Blazity/next-enterprise/actions/workflows/check.yml
-[github-license-badge-link]: https://github.com/Blazity/next-enterprise/blob/main/LICENSE
-[github-contributors-badge-link]: https://github.com/Blazity/next-enterprise/graphs/contributors
-[discord-badge-link]: https://blazity.com/discord
-[made-by-blazity-badge-link]: https://blazity.com/?utm_source=nextenterprise&utm_medium=github
