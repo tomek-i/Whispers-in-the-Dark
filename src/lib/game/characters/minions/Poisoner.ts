@@ -1,4 +1,5 @@
 import { Game } from "../../Game"
+import { Player } from "../../Player"
 import { Minion } from "./Minion"
 
 export class Poisoner extends Minion {
@@ -7,6 +8,7 @@ export class Poisoner extends Minion {
   }
   constructor(public readonly game: Game) {
     super({
+      Use: (target: Player) => target.ApplyPoison(),
       description: "Each night, choose a player: they are poisoned tonight and tomorrow day",
     })
   }
