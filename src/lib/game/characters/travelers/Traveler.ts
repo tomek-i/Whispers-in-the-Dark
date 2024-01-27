@@ -1,5 +1,3 @@
-class Traveler extends Character {
-  constructor() {
-    super()
-  }
-}
+import { Character } from ".."
+
+export class Traveler extends Character {}
