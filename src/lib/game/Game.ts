@@ -19,6 +19,7 @@ export class Game {
   #nightEndEmitter: EventEmitter = new EventEmitter()
 
   constructor(public gameMode: GameMode) {
+    //TODO: probably not needed
     this.#code = Math.random().toString(36).substring(2, 7).toUpperCase()
   }
 
