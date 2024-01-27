@@ -1,4 +1,5 @@
 import { Button } from "@/components/Button/Button"
+import { ScarletWoman } from "@/components/Characters/Minions/ScarletWoman"
 import { Metadata } from "next"
 import Image from "next/image"
 
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
 export default function Web() {
   return (
     <>
-      <section className="bg-gray-900  text-gray-50">
+      <section className="bg-gray-900 text-gray-50">
         <div className="mx-auto grid max-w-screen-xl px-4 py-8 text-center lg:py-16">
           <div className="mx-auto flex flex-col items-center place-self-center text-center align-middle">
             <h1 className="mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight dark:text-white md:text-5xl xl:text-6xl">
@@ -39,6 +40,7 @@ export default function Web() {
             </Button>
           </div>
         </div>
+        <ScarletWoman />
       </section>
     </>
   )
