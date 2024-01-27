@@ -16,7 +16,7 @@ export class ScarletWoman extends Minion {
         "If there are 5 or more players alive (Travellers don’t count) & the Demon dies, you become the Demon",
     })
 
-    this.game.onPlayerDeath((deadPlayer) => {
+    this.game?.onPlayerDeath((deadPlayer) => {
       if (deadPlayer.character instanceof Demon) {
         this.isDemon = true
       }

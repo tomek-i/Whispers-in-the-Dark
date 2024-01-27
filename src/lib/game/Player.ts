@@ -51,7 +51,7 @@ export class Player {
   //TODO: maybe need to implement Die when demon kills the character and Execute when townsfolk kills the character
   Die() {
     this.ApplyState(States.Dead)
-    this.game.playerDied(this)
+    this.game?.playerDied(this)
   }
 
   ApplyPoison() {
