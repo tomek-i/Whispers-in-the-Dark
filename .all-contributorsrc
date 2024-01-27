@@ -1,0 +1,22 @@
+{
+  "projectName": "blood on the clock",
+  "projectOwner": "Tomek Iwainski",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": ["README.md"],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "conventionalcommits.org",
+  "contributors": [
+    {
+      "login": "tomek-i",
+      "name": "Tomek Iwainski",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3699937?v=4",
+      "profile": "https://github.com/tomek-i/",
+      "contributions": ["code", "doc"]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "linkToUsage": true,
+  "commitType": "docs"
+}
