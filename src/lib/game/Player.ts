@@ -1,3 +1,4 @@
+import { Game } from "./Game"
 import { Character } from "./characters"
 import { States } from "./enums"
 
@@ -5,7 +6,7 @@ export class Player {
   #character?: Character
   #votes: boolean = true
   #state: States = States.Default
-
+  game!: Game
   constructor(public name: string) {}
 
   get character() {
@@ -50,6 +51,7 @@ export class Player {
   //TODO: maybe need to implement Die when demon kills the character and Execute when townsfolk kills the character
   Die() {
     this.ApplyState(States.Dead)
+    this.game.playerDied(this)
   }
 
   ApplyPoison() {
