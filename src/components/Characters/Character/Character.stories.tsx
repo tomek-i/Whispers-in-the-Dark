@@ -1,15 +1,14 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { Character } from ".";
-
+import { Meta, StoryObj } from "@storybook/react"
+import { Character } from "."
 
 const meta: Meta<typeof Character> = {
   component: Character,
-};
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof Character>;
+type Story = StoryObj<typeof Character>
 
 export const Primary: Story = {
   render: () => <Character />,
-};
+}
