@@ -1,9 +1,14 @@
-import { Role } from "@/lib/game/characters"
+import { Role } from "@/lib/game/enums"
 import { TownsfolkCharacterFactory, TownsfolkCharacters } from "@/lib/game/factories"
 
 describe("TownsfolkCharacterFactory", () => {
+  let factory: TownsfolkCharacterFactory
+
+  beforeAll(() => {
+    factory = new TownsfolkCharacterFactory()
+  })
   it("should create a valid Washerwoman character", () => {
-    const character = TownsfolkCharacterFactory.createCharacter(TownsfolkCharacters.Washerwoman)
+    const character = factory.createCharacter(TownsfolkCharacters.Washerwoman)
 
     expect(character).toBeDefined()
     expect(character.name).toBeDefined()
@@ -13,7 +18,7 @@ describe("TownsfolkCharacterFactory", () => {
   })
 
   it("should create a valid Librarian character", () => {
-    const character = TownsfolkCharacterFactory.createCharacter(TownsfolkCharacters.Librarian)
+    const character = factory.createCharacter(TownsfolkCharacters.Librarian)
 
     expect(character).toBeDefined()
     expect(character.name).toBeDefined()
@@ -23,7 +28,7 @@ describe("TownsfolkCharacterFactory", () => {
   })
 
   it("should create a valid Empath character", () => {
-    const character = TownsfolkCharacterFactory.createCharacter(TownsfolkCharacters.Empath)
+    const character = factory.createCharacter(TownsfolkCharacters.Empath)
 
     expect(character).toBeDefined()
     expect(character.name).toBeDefined()
@@ -33,7 +38,7 @@ describe("TownsfolkCharacterFactory", () => {
   })
 
   it("should create a valid Fortune Teller character", () => {
-    const character = TownsfolkCharacterFactory.createCharacter(TownsfolkCharacters.FortuneTeller)
+    const character = factory.createCharacter(TownsfolkCharacters.FortuneTeller)
 
     expect(character).toBeDefined()
     expect(character.name).toBeDefined()
@@ -43,7 +48,7 @@ describe("TownsfolkCharacterFactory", () => {
   })
 
   it("should create a valid Chef character", () => {
-    const character = TownsfolkCharacterFactory.createCharacter(TownsfolkCharacters.Chef)
+    const character = factory.createCharacter(TownsfolkCharacters.Chef)
 
     expect(character).toBeDefined()
     expect(character.name).toBeDefined()
@@ -53,7 +58,7 @@ describe("TownsfolkCharacterFactory", () => {
   })
 
   it("should create a valid Monk character", () => {
-    const character = TownsfolkCharacterFactory.createCharacter(TownsfolkCharacters.Monk)
+    const character = factory.createCharacter(TownsfolkCharacters.Monk)
 
     expect(character).toBeDefined()
     expect(character.name).toBeDefined()
@@ -63,7 +68,7 @@ describe("TownsfolkCharacterFactory", () => {
   })
 
   it("should create a valid Ravenkeeper character", () => {
-    const character = TownsfolkCharacterFactory.createCharacter(TownsfolkCharacters.Ravenkeeper)
+    const character = factory.createCharacter(TownsfolkCharacters.Ravenkeeper)
 
     expect(character).toBeDefined()
     expect(character.name).toBeDefined()
@@ -73,7 +78,7 @@ describe("TownsfolkCharacterFactory", () => {
   })
 
   it("should create a valid Virgin character", () => {
-    const character = TownsfolkCharacterFactory.createCharacter(TownsfolkCharacters.Virgin)
+    const character = factory.createCharacter(TownsfolkCharacters.Virgin)
 
     expect(character).toBeDefined()
     expect(character.name).toBeDefined()
@@ -83,7 +88,7 @@ describe("TownsfolkCharacterFactory", () => {
   })
 
   it("should create a valid Soldier character", () => {
-    const character = TownsfolkCharacterFactory.createCharacter(TownsfolkCharacters.Soldier)
+    const character = factory.createCharacter(TownsfolkCharacters.Soldier)
 
     expect(character).toBeDefined()
     expect(character.name).toBeDefined()
@@ -93,7 +98,7 @@ describe("TownsfolkCharacterFactory", () => {
   })
 
   it("should create a valid Mayor character", () => {
-    const character = TownsfolkCharacterFactory.createCharacter(TownsfolkCharacters.Mayor)
+    const character = factory.createCharacter(TownsfolkCharacters.Mayor)
 
     expect(character).toBeDefined()
     expect(character.name).toBeDefined()
@@ -103,7 +108,7 @@ describe("TownsfolkCharacterFactory", () => {
   })
 
   it("should create a valid Investigator character", () => {
-    const character = TownsfolkCharacterFactory.createCharacter(TownsfolkCharacters.Investigator)
+    const character = factory.createCharacter(TownsfolkCharacters.Investigator)
 
     expect(character).toBeDefined()
     expect(character.name).toBeDefined()
@@ -113,7 +118,7 @@ describe("TownsfolkCharacterFactory", () => {
   })
 
   it("should create a valid Undertaker character", () => {
-    const character = TownsfolkCharacterFactory.createCharacter(TownsfolkCharacters.Undertaker)
+    const character = factory.createCharacter(TownsfolkCharacters.Undertaker)
 
     expect(character).toBeDefined()
     expect(character.name).toBeDefined()
@@ -123,7 +128,7 @@ describe("TownsfolkCharacterFactory", () => {
   })
 
   it("should create a valid Slayer character", () => {
-    const character = TownsfolkCharacterFactory.createCharacter(TownsfolkCharacters.Slayer)
+    const character = factory.createCharacter(TownsfolkCharacters.Slayer)
 
     expect(character).toBeDefined()
     expect(character.name).toBeDefined()
@@ -133,7 +138,7 @@ describe("TownsfolkCharacterFactory", () => {
   })
 
   it("should throw an error if an invalid character is passed in", () => {
-    expect(() => TownsfolkCharacterFactory.createCharacter("Invalid Character" as TownsfolkCharacters)).toThrowError(
+    expect(() => factory.createCharacter("Invalid Character" as TownsfolkCharacters)).toThrowError(
       "Invalid character: Invalid Character"
     )
   })

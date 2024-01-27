@@ -1,8 +1,8 @@
 import { Character } from "./characters"
-import { Demon } from "./characters/demons"
-import { Minion } from "./characters/minions"
-import { Outsider } from "./characters/outsiders"
-import { Townsfolk } from "./characters/townsfolk"
+import { Demon } from "./characters/demons/Demon"
+import { Minion } from "./characters/minions/Minion"
+import { Outsider } from "./characters/outsiders/Outsider"
+import { Townsfolk } from "./characters/townsfolk/Townsfolk"
 import { Game } from "./Game"
 import { GameMode, gameModeCharacterMap } from "./gameModes"
 import { GameUtil } from "./GameUtil"
@@ -42,7 +42,7 @@ export class GameBuilder {
       const randomIndex = Math.floor(Math.random() * characters.length)
 
       // Assign the character at the random index to the player
-      player.character = this.game.charactersInPlay[randomIndex]
+      player.character = this.game.charactersInPlay[randomIndex]!
 
       // Remove the assigned character from the characters array
       characters.splice(randomIndex, 1)

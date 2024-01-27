@@ -15,6 +15,7 @@ export class Game {
     this.#code = Math.random().toString(36).substring(2, 7).toUpperCase()
   }
 
+  //TODO: perhaps need to implement StartNight() and EndNight() methods
   sleep() {
     this.#night++
   }

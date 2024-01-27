@@ -1,24 +1,5 @@
-export enum CharacterType {
-  Townsfolk = "Townfolk",
-  Outsider = "Outsider",
-  Minion = "Minion",
-  Demon = "Demon",
-  Traveler = "Traveler",
-}
-
-export enum States {
-  Default,
-  Poisoned,
-  Drunk,
-  Dead,
-}
-export enum Role {
-  Default = "default",
-  Good = "good",
-  Evil = "evil",
-}
-
-export type CharacterRoleMap = Record<CharacterType, Role>
+import { CharacterType, Role, States } from "../enums"
+import { Ability, CharacterRoleMap } from "../types"
 
 export const characterRoleMap: CharacterRoleMap = {
   [CharacterType.Townsfolk]: Role.Good,
@@ -28,36 +9,28 @@ export const characterRoleMap: CharacterRoleMap = {
   [CharacterType.Traveler]: Role.Default,
 }
 
-// abstract class Character {
-//   constructor(
-//     public characterType: CharacterType,
-//     public state: States,
-//     public role: Role
-//   ) {}
-// }
-
-// class Townsfolk extends Character {
-//   constructor(state: States, role: Role) {
-//     super(CharacterType.Townsfolk, state, role)
-//   }
-// }
-
 export class Character {
   readonly #name: string
   readonly #role: Role
 
-  readonly #state: States
-  readonly #votes: number
+  #votes: boolean
+  #state: States
 
-  constructor(private characterType: CharacterType) {
+  constructor(
+    private readonly _characterType: CharacterType,
+    public readonly ability: Ability
+  ) {
     this.#name = this.constructor.name
-    this.#role = characterRoleMap[this.characterType]
+    this.#role = characterRoleMap[this._characterType]
     this.#state = States.Default
-    this.#votes = 1
+    this.#votes = true
   }
 
   get role(): Role {
     return this.#role
+  }
+  get characterType(): CharacterType {
+    return this._characterType
   }
   get name(): string {
     return this.#name
@@ -67,8 +40,12 @@ export class Character {
     return this.#state !== States.Dead
   }
 
+  ApplyState(state: States) {
+    this.#state = state
+  }
+
   CanVote(): boolean {
-    return this.IsAlive() && this.#votes > 0
+    return this.IsAlive() || (!this.IsAlive() && this.#votes)
   }
 
   IsDrunk(): boolean {
@@ -81,5 +58,29 @@ export class Character {
 
   CanUseAbility(): boolean {
     return this.IsAlive() && !(this.IsDrunk() || this.IsPoisoned())
+  }
+
+  Vote() {
+    //NOTE: this is a hack to allow dead characters to vote
+    this.#votes = false
+  }
+  //TODO: maybe need to implement Die when demon kills the character and Execute when townsfolk kills the character
+  Die() {
+    this.ApplyState(States.Dead)
+  }
+
+  ApplyPoison() {
+    this.ApplyState(States.Poisoned)
+  }
+
+  ApplyDrunk() {
+    this.ApplyState(States.Drunk)
+  }
+
+  Revive() {
+    this.ApplyState(States.Default)
+  }
+  IsPoisonedOrDrunk(): any {
+    return this.IsPoisoned() || this.IsDrunk()
   }
 }

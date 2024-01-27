@@ -1,50 +1,26 @@
-import { Role } from "@/lib/game/characters"
 import { OutsiderCharacterFactory, OutsiderCharacters } from "@/lib/game/factories"
+import { testOutsiderCreation } from "./testHelper"
 
 describe("OutsiderCharacterFactory", () => {
   it("should create a valid Butler character", () => {
-    const character = OutsiderCharacterFactory.createCharacter(OutsiderCharacters.Butler)
-
-    expect(character).toBeDefined()
-    expect(character.name).toBeDefined()
-    expect(character.name).toBe("Butler")
-    expect(character.role).toBeDefined()
-    expect(character.role).toBe(Role.Good)
+    testOutsiderCreation(OutsiderCharacters.Butler, "Butler")
   })
 
   it("should create a valid Drunk character", () => {
-    const character = OutsiderCharacterFactory.createCharacter(OutsiderCharacters.Drunk)
-
-    expect(character).toBeDefined()
-    expect(character.name).toBeDefined()
-    expect(character.name).toBe("Drunk")
-    expect(character.role).toBeDefined()
-    expect(character.role).toBe(Role.Good)
+    testOutsiderCreation(OutsiderCharacters.Drunk, "Drunk")
   })
 
   it("should create a valid ScarletWoman character", () => {
-    const character = OutsiderCharacterFactory.createCharacter(OutsiderCharacters.Recluse)
-
-    expect(character).toBeDefined()
-    expect(character.name).toBeDefined()
-    expect(character.name).toBe("Recluse")
-    expect(character.role).toBeDefined()
-    expect(character.role).toBe(Role.Good)
+    testOutsiderCreation(OutsiderCharacters.Recluse, "Recluse")
   })
 
   it("should create a valid Saint character", () => {
-    const character = OutsiderCharacterFactory.createCharacter(OutsiderCharacters.Saint)
-
-    expect(character).toBeDefined()
-    expect(character.name).toBeDefined()
-    expect(character.name).toBe("Saint")
-    expect(character.role).toBeDefined()
-    expect(character.role).toBe(Role.Good)
+    testOutsiderCreation(OutsiderCharacters.Saint, "Saint")
   })
 
   it("should throw an error if an invalid character is passed in", () => {
-    expect(() => OutsiderCharacterFactory.createCharacter("Invalid Character" as OutsiderCharacters)).toThrowError(
-      "Invalid character: Invalid Character"
-    )
+    expect(() =>
+      new OutsiderCharacterFactory().createCharacter("Invalid Character" as OutsiderCharacters)
+    ).toThrowError("Invalid character: Invalid Character")
   })
 })

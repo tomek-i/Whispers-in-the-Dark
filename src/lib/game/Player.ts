@@ -1,8 +1,6 @@
 import { Character } from "./characters"
 
 export class Player {
-  Character: Character | null = null
-  character: Character | undefined
-
+  character: Character | null = null
   constructor(public name: string) {}
 }

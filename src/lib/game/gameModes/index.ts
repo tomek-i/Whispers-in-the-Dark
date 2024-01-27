@@ -1,6 +1,6 @@
 import { Character } from "../characters"
 import {
-  CharacterFactory,
+  AllCharactersFactory,
   DemonCharacters,
   MinionCharacters,
   OutsiderCharacters,
@@ -18,7 +18,7 @@ export const GetCharactersForGameMode = (gameMode: GameMode): Character[] => {
   return gameModeCharacterMap[gameMode]
 }
 export const gameModeCharacterMap: GameModeCharacterMap = {
-  [GameMode.TroubleBrewing]: CharacterFactory.createCharacters([
+  [GameMode.TroubleBrewing]: new AllCharactersFactory().createCharacters([
     TownsfolkCharacters.Washerwoman,
     TownsfolkCharacters.Librarian,
     TownsfolkCharacters.Investigator,

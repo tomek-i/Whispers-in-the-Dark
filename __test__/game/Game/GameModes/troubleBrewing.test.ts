@@ -1,25 +1,32 @@
-import { Character } from "@/lib/game/characters"
-import { Demon, Imp } from "@/lib/game/characters/demons"
-import { Baron, Minion, Poisoner, ScarletWoman, Spy } from "@/lib/game/characters/minions"
-import { Butler, Drunk, Outsider, Recluse, Saint } from "@/lib/game/characters/outsiders"
-import {
-  Chef,
-  Empath,
-  FortuneTeller,
-  Investigator,
-  Librarian,
-  Mayor,
-  Monk,
-  Ravenkeeper,
-  Slayer,
-  Soldier,
-  Townsfolk,
-  Undertaker,
-  Virgin,
-  Washerwoman,
-} from "@/lib/game/characters/townsfolk"
-import { GameMode, GetCharactersForGameMode } from "@/lib/game/gameModes"
 import { GameUtil } from "@/lib/game/GameUtil"
+import { Character } from "@/lib/game/characters"
+import { Demon } from "@/lib/game/characters/demons/Demon"
+import { Imp } from "@/lib/game/characters/demons/Imp"
+import { Baron } from "@/lib/game/characters/minions/Baron"
+import { Minion } from "@/lib/game/characters/minions/Minion"
+import { Poisoner } from "@/lib/game/characters/minions/Poisoner"
+import { ScarletWoman } from "@/lib/game/characters/minions/ScarletWoman"
+import { Spy } from "@/lib/game/characters/minions/Spy"
+import { Butler } from "@/lib/game/characters/outsiders/Butler"
+import { Drunk } from "@/lib/game/characters/outsiders/Drunk"
+import { Outsider } from "@/lib/game/characters/outsiders/Outsider"
+import { Recluse } from "@/lib/game/characters/outsiders/Recluse"
+import { Saint } from "@/lib/game/characters/outsiders/Saint"
+import { Chef } from "@/lib/game/characters/townsfolk/Chef"
+import { Empath } from "@/lib/game/characters/townsfolk/Empath"
+import { FortuneTeller } from "@/lib/game/characters/townsfolk/FortuneTeller"
+import { Investigator } from "@/lib/game/characters/townsfolk/Investigator"
+import { Librarian } from "@/lib/game/characters/townsfolk/Librarian"
+import { Mayor } from "@/lib/game/characters/townsfolk/Mayor"
+import { Monk } from "@/lib/game/characters/townsfolk/Monk"
+import { Ravenkeeper } from "@/lib/game/characters/townsfolk/Ravenkeeper"
+import { Slayer } from "@/lib/game/characters/townsfolk/Slayer"
+import { Soldier } from "@/lib/game/characters/townsfolk/Soldier"
+import { Townsfolk } from "@/lib/game/characters/townsfolk/Townsfolk"
+import { Undertaker } from "@/lib/game/characters/townsfolk/Undertaker"
+import { Virgin } from "@/lib/game/characters/townsfolk/Virgin"
+import { Washerwoman } from "@/lib/game/characters/townsfolk/Washerwoman"
+import { GameMode, GetCharactersForGameMode } from "@/lib/game/gameModes"
 describe("Game TroubleBrewing available characters", () => {
   let characters: Character[]
 
@@ -44,6 +51,7 @@ describe("Game TroubleBrewing available characters", () => {
       Soldier,
       Mayor,
     ]
+
     // Act
     const townsfolk = GameUtil.getCharacterOfType(characters, Townsfolk)
     // Assert
