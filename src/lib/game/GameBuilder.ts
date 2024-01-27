@@ -3,6 +3,7 @@ import { Demon } from "./characters/demons/Demon"
 import { Minion } from "./characters/minions/Minion"
 import { Outsider } from "./characters/outsiders/Outsider"
 import { Townsfolk } from "./characters/townsfolk/Townsfolk"
+import { MinionCharacters } from "./factories"
 import { Game } from "./Game"
 import { GameMode, gameModeCharacterMap } from "./gameModes"
 import { GameUtil } from "./GameUtil"
@@ -29,6 +30,9 @@ export class GameBuilder {
 
     /* Pick random characters from the available characters */
     const { demons, minions, outsiders, townsfolks } = this.pickRandomCharacters(allocation)
+
+    //TODO: what if the baron is in play?
+    const baronInPlay = minions.find((item) => item.name === MinionCharacters.Baron)
 
     this.game.charactersInPlay = [...demons, ...minions, ...outsiders, ...townsfolks]
     this.game.charactersNotInPlay = this.availableCharacters.filter(
