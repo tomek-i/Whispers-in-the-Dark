@@ -8,8 +8,6 @@ import { GameMode, gameModeCharacterMap } from "./gameModes"
 import { GameUtil } from "./GameUtil"
 import { Player } from "./Player"
 
-//new GameBuilder(GameMode.TroubleBrewing).withPlayers(players).assignCharactersToPlayers().build()
-
 export class GameBuilder {
   private game: Game
   private availableCharacters: Character[]
