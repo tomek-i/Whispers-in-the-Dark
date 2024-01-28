@@ -6,6 +6,7 @@ export class Chef extends Townsfolk {
   //TODO: need to take into account about the Spy
   constructor(public readonly game: Game) {
     super({
+      Use: (_) => null,
       description: "You start knowing how many pairs of evil players there are.",
     })
   }
