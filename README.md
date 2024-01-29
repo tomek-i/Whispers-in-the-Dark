@@ -1,6 +1,6 @@
-<img align="right" width="360px" height="410px" src="./.github/assets/project-logo-vertical.jpg">
+# Blood on the Clock
 
-# Blood on the Clock </br>
+![blood on the clock logo](./.github/assets/project-logo-vertical.jpg)
 
 Welcome to the _Blood on the Clock_, an open-source template for the game. 🌍
 
@@ -33,10 +33,11 @@ Welcome to the _Blood on the Clock_, an open-source template for the game. 🌍
 
 ## Table of Contents
 
-- [Blood on the Clock ](#blood-on-the-clock-)
+- [Blood on the Clock](#blood-on-the-clock)
   - [Features](#features)
   - [Table of Contents](#table-of-contents)
   - [🎯 Getting Started](#-getting-started)
+  - [Environment variables](#environment-variables)
   - [🚀 Deployment](#-deployment)
   - [📃 Scripts Overview](#-scripts-overview)
   - [🔗 Coupling Graph](#-coupling-graph)
@@ -87,6 +88,19 @@ yarn dev
 ```sh
 brew install pre-commit
 pre-commit install -t commit-msg
+```
+
+## Environment variables
+
+```js
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=
+FIREBASE_DATABASE=
 ```
 
 ## 🚀 Deployment
