@@ -6,7 +6,7 @@ import { GameMode } from "./gameModes"
 import { Player } from "./Player"
 
 export class Game {
-  readonly #code: string = ""
+  code: string = ""
   #night: number = 1
 
   #players: Player[] = []
@@ -20,7 +20,7 @@ export class Game {
 
   constructor(public gameMode: GameMode) {
     //TODO: probably not needed
-    this.#code = Math.random().toString(36).substring(2, 7).toUpperCase()
+    // this.code = Math.random().toString(36).substring(2, 7).toUpperCase()
   }
 
   // Method to subscribe to player death events
@@ -58,9 +58,9 @@ export class Game {
     return this.#night
   }
 
-  get code(): string {
-    return this.#code
-  }
+  // get code(): string {
+  //   return this.#code
+  // }
 
   set players(players: Player[]) {
     this.#players = players
