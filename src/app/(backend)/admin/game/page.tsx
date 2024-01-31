@@ -1,9 +1,9 @@
 "use client"
 
-import { GameCreationPayload } from "@/app/api/admin/game/route"
-import { Util } from "@/lib/util"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
+import { GameCreationPayload } from "@/app/api/admin/game/route"
+import { Util } from "@/lib/util"
 
 export default function AdminDashboard() {
   const router = useRouter()

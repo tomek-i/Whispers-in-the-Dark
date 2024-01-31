@@ -1,5 +1,5 @@
-import { Game } from "../../Game"
 import { Townsfolk } from "./Townsfolk"
+import { Game } from "../../Game"
 
 export class FortuneTeller extends Townsfolk {
   //TODO: what if scarlet women and demon are picked and demon is alive?

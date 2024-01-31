@@ -1,5 +1,5 @@
-import { Game } from "../../Game"
 import { Townsfolk } from "./Townsfolk"
+import { Game } from "../../Game"
 
 export class Chef extends Townsfolk {
   //TODO: when and how often does this trigger?

@@ -1,7 +1,7 @@
 "use client"
-import signUp from "@/lib/auth/singup"
 import { useRouter } from "next/navigation"
 import React, { FormEvent } from "react"
+import signUp from "@/lib/auth/singup"
 
 export default function Page() {
   const [email, setEmail] = React.useState("")

@@ -1,6 +1,6 @@
+import { Minion } from "./Minion"
 import { Game } from "../../Game"
 import { Demon } from "../demons/Demon"
-import { Minion } from "./Minion"
 
 export class ScarletWoman extends Minion {
   //TODO: does the player find out that they become now the demon when the actual demon dies?

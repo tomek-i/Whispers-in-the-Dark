@@ -1,7 +1,7 @@
-import { Game } from "../../Game"
-import { AbilityUsageError } from "../../errors"
-import { Soldier } from "../townsfolk"
 import { Demon } from "./Demon"
+import { AbilityUsageError } from "../../errors"
+import { Game } from "../../Game"
+import { Soldier } from "../townsfolk"
 
 export class Imp extends Demon {
   constructor(public readonly game: Game) {

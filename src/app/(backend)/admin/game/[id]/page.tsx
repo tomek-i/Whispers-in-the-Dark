@@ -9,7 +9,7 @@ export default function GamePage({ params }: { params: { id: string } }) {
   useEffect(() => {
     const response = async () => await fetch(`/api/admin/game/${params.id.toLowerCase()}`, { method: "GET" })
     response()
-  }, [])
+  }, [params.id])
   return (
     <div>
       <p>Game ID: {params.id}</p>

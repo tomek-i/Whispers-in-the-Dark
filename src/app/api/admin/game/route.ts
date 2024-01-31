@@ -1,7 +1,7 @@
+import { NextRequest } from "next/server"
 import { Game } from "@/lib/game/Game"
 import { GameMode } from "@/lib/game/gameModes"
 import { Util } from "@/lib/util"
-import { NextRequest } from "next/server"
 
 export async function GET() {
   return Response.json({ status: "ok" })

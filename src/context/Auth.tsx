@@ -1,6 +1,6 @@
-import { firebase } from "@/lib/firebase"
 import { getAuth, onAuthStateChanged, User } from "firebase/auth"
 import React, { createContext, FC, useContext, useEffect, useState } from "react"
+import { firebase } from "@/lib/firebase"
 
 const auth = getAuth(firebase.app)
 

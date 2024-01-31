@@ -1,8 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { env as clientEnv } from "@/env/client.env"
-import { env as serverEnv } from "@/env/server.env"
 import { initializeApp } from "firebase/app"
-import { getDatabase } from "firebase/database"
+import { env as clientEnv } from "@/env/client.env"
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -17,16 +15,15 @@ const firebaseConfig = {
   messagingSenderId: clientEnv.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: clientEnv.NEXT_PUBLIC_FIREBASE_APP_ID,
   measurementId: clientEnv.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
-  databaseURL: serverEnv.FIREBASE_DATABASE_URL,
+  // databaseURL: serverEnv.FIREBASE_DATABASE_URL,
 }
-console.log({ firebaseConfig })
 // Initialize Firebase
 const firebase_app = initializeApp(firebaseConfig)
 // const firebase_analytics = getAnalytics(firebase_app)
-const database = getDatabase(firebase_app)
+// const database = getDatabase(firebase_app)
 
 export const firebase = {
   app: firebase_app,
   // analytics: firebase_analytics,
-  db: database,
+  // db: database,
 }

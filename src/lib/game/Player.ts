@@ -1,6 +1,6 @@
-import { Game } from "./Game"
 import { Character } from "./characters"
 import { States } from "./enums"
+import { Game } from "./Game"
 
 export class Player {
   #character?: Character

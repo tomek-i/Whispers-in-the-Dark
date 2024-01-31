@@ -1,5 +1,5 @@
-import { Game } from "../../Game"
 import { Outsider } from "./Outsider"
+import { Game } from "../../Game"
 
 export class Butler extends Outsider {
   constructor(public readonly game: Game) {

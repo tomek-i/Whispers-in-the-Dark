@@ -1,5 +1,5 @@
-import { Game } from "../../Game"
 import { Townsfolk } from "./Townsfolk"
+import { Game } from "../../Game"
 
 export class Librarian extends Townsfolk {
   //TODO: need find out exaclty how to implement this

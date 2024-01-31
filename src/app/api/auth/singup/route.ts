@@ -1,5 +1,5 @@
-import signUp from "@/lib/auth/singup"
 import { NextRequest } from "next/server"
+import signUp from "@/lib/auth/singup"
 
 export async function POST(request: NextRequest, context: { params: any }) {
   console.log({ context: context.params })

@@ -1,5 +1,5 @@
-import { Game } from "../../Game"
 import { Outsider } from "./Outsider"
+import { Game } from "../../Game"
 
 export class Recluse extends Outsider {
   //TODO: see how this is done with the Spy

@@ -1,5 +1,5 @@
-import { Game } from "../../Game"
 import { Minion } from "./Minion"
+import { Game } from "../../Game"
 
 export class Baron extends Minion {
   constructor(public readonly game: Game) {

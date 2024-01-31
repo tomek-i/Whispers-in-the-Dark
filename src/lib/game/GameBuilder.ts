@@ -32,7 +32,7 @@ export class GameBuilder {
     const { demons, minions, outsiders, townsfolks } = this.pickRandomCharacters(allocation)
 
     //TODO: what if the baron is in play?
-    const baronInPlay = minions.find((item) => item.name === MinionCharacters.Baron)
+    const _baronInPlay = minions.find((item) => item.name === MinionCharacters.Baron)
 
     this.game.charactersInPlay = [...demons, ...minions, ...outsiders, ...townsfolks]
     this.game.charactersNotInPlay = this.availableCharacters.filter(

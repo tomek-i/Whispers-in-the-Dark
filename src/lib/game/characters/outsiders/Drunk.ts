@@ -1,5 +1,5 @@
-import { Game } from "../../Game"
 import { Outsider } from "./Outsider"
+import { Game } from "../../Game"
 
 export class Drunk extends Outsider {
   //TODO: need to check how this works, do they get told they are a specific townsfolk character that was not in play?

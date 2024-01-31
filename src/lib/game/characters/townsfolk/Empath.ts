@@ -1,5 +1,5 @@
-import { Game } from "../../Game"
 import { Townsfolk } from "./Townsfolk"
+import { Game } from "../../Game"
 
 export class Empath extends Townsfolk {
   //TODO: need to take into account about the Spy

@@ -1,4 +1,3 @@
-import { Game } from "../Game"
 import { Demon } from "../characters/demons/Demon"
 import { Imp } from "../characters/demons/Imp"
 import { Baron } from "../characters/minions/Baron"
@@ -26,6 +25,7 @@ import { Undertaker } from "../characters/townsfolk/Undertaker"
 import { Virgin } from "../characters/townsfolk/Virgin"
 import { Washerwoman } from "../characters/townsfolk/Washerwoman"
 import { InvalidCharacterError } from "../errors"
+import { Game } from "../Game"
 import {
   AllCharacterClasses,
   AllCharacters,

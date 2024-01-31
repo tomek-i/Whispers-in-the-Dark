@@ -1,6 +1,6 @@
-import { Game } from "../../Game"
-import { CharacterType, Role } from "../../enums"
 import { Minion } from "./Minion"
+import { CharacterType, Role } from "../../enums"
+import { Game } from "../../Game"
 
 export class Spy extends Minion {
   //TODO: need to figure out a way to let the game master override this or perhaps an AI if we can give the AI context of the game progression

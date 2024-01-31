@@ -1,5 +1,5 @@
-import { Game } from "../../Game"
 import { Townsfolk } from "./Townsfolk"
+import { Game } from "../../Game"
 
 export class Virgin extends Townsfolk {
   //TODO: need to figure out edge cases about the nominations

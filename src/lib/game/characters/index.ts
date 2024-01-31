@@ -1,5 +1,5 @@
-import { Player } from "../Player"
 import { CharacterType, Role } from "../enums"
+import { Player } from "../Player"
 import { Ability, CharacterRoleMap } from "../types"
 
 export const characterRoleMap: CharacterRoleMap = {

@@ -1,5 +1,5 @@
-import { Game } from "../../Game"
 import { Townsfolk } from "./Townsfolk"
+import { Game } from "../../Game"
 
 export class Washerwoman extends Townsfolk {
   //TODO: need to check when they get to use this ability
