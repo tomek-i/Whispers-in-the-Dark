@@ -1,9 +1,11 @@
 "use client"
 import { type VariantProps } from "class-variance-authority"
+import { signOut } from "firebase/auth"
 import Image from "next/legacy/image"
 import Link from "next/link"
 import React from "react"
 import { useAuthContext } from "@/context"
+import { firebase } from "@/lib/firebase"
 import { MainNavigaionVariants } from "./MainNavigaion.variants"
 
 type MainNavigaionProps = { disabled?: boolean } & React.HTMLAttributes<HTMLDivElement> &
@@ -53,6 +55,7 @@ export const MainNavigaion: React.FC<MainNavigaionProps> = ({
               <>
                 <span className="mr-3 cursor-default ">{user.email}</span>
                 <div className="h-10 w-10 rounded-full bg-slate-600 hover:bg-slate-400" />
+                <button onClick={() => signOut(firebase.auth)}>logout</button>
               </>
             )}
             {!user && (
