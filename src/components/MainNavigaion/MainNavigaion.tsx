@@ -1,5 +1,6 @@
 "use client"
 import { type VariantProps } from "class-variance-authority"
+import Image from "next/image"
 import Link from "next/link"
 import React from "react"
 import { useAuthContext } from "@/context"
@@ -20,7 +21,9 @@ export const MainNavigaion: React.FC<MainNavigaionProps> = ({
     <nav className="flex justify-between bg-gray-100 py-2 text-gray-900 dark:bg-gray-800 lg:py-4">
       <div className="px-3">
         <Link href="/">
-          <div className="h-10 w-10 rounded-full bg-gray-600"></div>
+          <div className="relative h-10 w-10 rounded-full">
+            <Image className="rounded-full" src="/blood-on-the-clock.jpg" alt="logo" objectFit="cover" layout="fill" />
+          </div>
         </Link>
       </div>
 
