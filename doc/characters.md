@@ -33,3 +33,5 @@ Spy -> Whispering Spy / Agent of Shadows / Whisperer
 ## Overlords
 
 Imp -> Imposter
+
+## Wanderers / Wayfarer
