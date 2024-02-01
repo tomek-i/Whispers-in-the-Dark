@@ -1,10 +1,6 @@
 "use client"
 import { LoginForm } from "@/components/LoginForm"
 
-export default function Page() {
-  return (
-    <div className="flex min-h-screen items-center justify-center">
-      <LoginForm />
-    </div>
-  )
+export default function LoginnPage() {
+  return <LoginForm />
 }
