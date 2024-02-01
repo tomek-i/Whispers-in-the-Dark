@@ -16,12 +16,8 @@ Welcome to the _Whispers in the Dark_, an open-source game.
     - [Running Tests](./wiki/testing.md#running-tests)
     - [Acceptance Tests](./wiki/testing.md#acceptance-tests)
     - [Smoke Testing](./wiki/testing.md#smoke-testing)
-  - [🎨 Styling and Design System](#🎨-styling-and-design-system)
-    - [CVA - A New Approach to Variants](#cva---a-new-approach-to-variants)
-  - [💾 State Management](#💾-state-management)
-    - [Zustand](#zustand)
-    - [Jotai](#jotai)
-    - [Recoil](#recoil)
+  - [🎨 Styling and Design System](./wiki/styling-and-design.md#🎨-styling-and-design-system)
+    - [CVA - A New Approach to Variants](./wiki/styling-and-design.md#cva---a-new-approach-to-variants)
   - [🤖 ChatGPT Code Review](#🤖-chatgpt-code-review)
   - [💻 Environment Variables handling](#💻-environment-variables-handling)
   - [🤝 Contribution](#🤝-contribution)
@@ -108,36 +104,6 @@ yarn coupling-graph
 This will create a `graph.svg` file, which contains a graphical representation of the connections between your components. You can open the file with any SVG-compatible viewer.
 
 ![graph](./graph.svg)
-
-## 🎨 Styling and Design System
-
-This project uses Tailwind CSS for styling and CVA for creating a powerful, easy-to-use design system. If you want to learn more about the setup, check out this fantastic video by Vercel:
-
-[![Styling and Design System](https://img.youtube.com/vi/T-Zv73yZ_QI/0.jpg)](https://www.youtube.com/watch?v=T-Zv73yZ_QI&ab_channel=Vercel)
-
-### CVA - A New Approach to Variants
-
-While CSS-in-TS libraries such as [Stitches](https://stitches.dev/) and [Vanilla Extract](https://vanilla-extract.style/) are great for building type-safe UI components, they might not be the perfect fit for everyone. You may prefer more control over your stylesheets, need to use a framework like Tailwind CSS, or simply enjoy writing your own CSS.
-
-Creating variants using traditional CSS can be a tedious task, requiring you to manually match classes to props and add types. CVA is here to take that pain away, allowing you to focus on the enjoyable aspects of UI development. By providing an easy and type-safe way to create variants, CVA simplifies the process and helps you create powerful design systems without compromising on the flexibility and control of CSS.
-
-## 💾 State Management
-
-While this boilerplate doesn't include a specific state management library, we believe it's essential for you to choose the one that best suits your project's needs. Here are some libraries we recommend for state management:
-
-### Zustand
-
-[Zustand](https://github.com/pmndrs/zustand) is a small, fast, and scalable state management library. It's designed to be simple and intuitive, making it a great choice for small to medium-sized projects. It's also optimized for bundle size, ensuring minimal impact on your app's performance.
-
-### Jotai
-
-[Jotai](https://github.com/pmndrs/jotai) is an atom-based state management library for React that focuses on providing a minimal and straightforward API. Its atom-based approach allows you to manage your state in a granular way while still being highly optimized for bundle size.
-
-### Recoil
-
-[Recoil](https://recoiljs.org/) is a state management library developed by Facebook, specifically designed for React applications. By utilizing atoms and selectors, Recoil allows you to efficiently manage state and derived state. Its key benefit is the ability to update components only when the state they're subscribed to changes, reducing unnecessary re-renders and keeping your application fast and efficient. Recoil also offers great developer experience with built-in debugging tools.
-
-Choose the library that best fits your requirements and project structure to ensure an efficient state management solution for your application.
 
 ## 🤖 ChatGPT Code Review
 
