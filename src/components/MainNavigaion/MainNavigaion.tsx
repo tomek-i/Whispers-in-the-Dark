@@ -1,6 +1,6 @@
 "use client"
 import { type VariantProps } from "class-variance-authority"
-import Image from "next/image"
+import Image from "next/legacy/image"
 import Link from "next/link"
 import React from "react"
 import { useAuthContext } from "@/context"

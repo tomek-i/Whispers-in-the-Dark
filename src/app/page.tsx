@@ -1,7 +1,7 @@
 "use client"
 import { getToken, onMessage } from "firebase/messaging"
 import { Metadata } from "next"
-import Image from "next/image"
+import Image from "next/legacy/image"
 import { useEffect } from "react"
 import { toast, ToastContainer } from "react-toastify"
 import { Button } from "@/components/Button/Button"
