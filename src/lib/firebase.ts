@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app"
 import { getDatabase } from "firebase/database"
-import { getMessaging } from "firebase/messaging"
+import { getMessaging, getToken } from "firebase/messaging"
 import { env } from "@/env/client.env"
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -28,6 +28,10 @@ const firebase_database = getDatabase(firebase_app)
 
 // Initialize Firebase Cloud Messaging and get a reference to the service
 const firebase_messaging = getMessaging(firebase_app)
+
+getToken(firebase_messaging, {
+  vapidKey: env.NEXT_PUBLIC_FIREBASE_MESSAGING_VAPID_KEY,
+})
 
 export const firebase = {
   app: firebase_app,
