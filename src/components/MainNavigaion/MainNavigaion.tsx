@@ -29,7 +29,7 @@ export const MainNavigaion: React.FC<MainNavigaionProps> = ({
 
       <div className="flex items-center">
         <div className=" mt-2  grow basis-[100%] items-center lg:mt-0 lg:!flex lg:basis-auto">
-          <div className="mr-4 flex items-center">
+          <div className="mr-4 flex items-center space-x-4">
             {user && (
               <>
                 <ul className="mr-8 flex space-x-4">
@@ -51,19 +51,16 @@ export const MainNavigaion: React.FC<MainNavigaionProps> = ({
             )}
             {!user && (
               <>
-                <Link
-                  href="/login"
-                  type="button"
-                  className="text-primary mr-3 inline-block rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out hover:bg-neutral-100 hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 motion-reduce:transition-none"
-                >
+                <Link href="/login" type="button" className="rounded bg-slate-100 px-4 py-2 hover:text-primary-600">
                   Login
                 </Link>
-                <button
+                <Link
+                  href="/signup"
                   type="button"
-                  className="bg-primary mr-3 inline-block rounded bg-primary-800 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] motion-reduce:transition-none dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                  className="rounded bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 "
                 >
                   Sign up for free
-                </button>
+                </Link>
               </>
             )}
           </div>
