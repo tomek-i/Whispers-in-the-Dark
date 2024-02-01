@@ -10,12 +10,15 @@ export default async function signUp(email: string, password: string) {
   try {
     console.log({ auth })
     result = await createUserWithEmailAndPassword(auth, email, password)
+
     await setDoc(doc(firebase.firestore, "users", result.user.uid), {
       uid: result.user.uid,
       email,
       firstname: "", //TODO: add firstname to signup form
       lastname: "", //TODO: add lastname to signup form
     })
+    // create a user-games document for the user, which basically stors the games the user has joined and played in
+    // await setDoc(doc(firebase.firestore, "user-games", result.user.uid), {})
   } catch (e) {
     error = e
   }
