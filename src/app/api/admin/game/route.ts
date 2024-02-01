@@ -1,6 +1,6 @@
 import { get, ref, set } from "firebase/database"
 import { NextRequest } from "next/server"
-import { database } from "@/lib/db"
+import { firebase } from "@/lib/firebase"
 import { Game } from "@/lib/game/Game"
 import { GameMode } from "@/lib/game/gameModes"
 import { Util } from "@/lib/util"
@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
   const game = new Game(GameMode.TroubleBrewing)
   game.code = id
   //TODO: store in firebase
-  const db = database
+  const db = firebase.database
   console.log({ game })
   set(ref(db, "games/" + id), JSON.stringify(game))
 
@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(_request: NextRequest) {
-  const db = database
+  const db = firebase.database
   const snapshot = await get(ref(db, "games/"))
   console.log(snapshot.val())
   return Response.json({ status: "ok", games: snapshot.val() })
