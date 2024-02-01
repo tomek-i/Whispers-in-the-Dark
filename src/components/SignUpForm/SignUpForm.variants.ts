@@ -1,5 +1,4 @@
 import { cva } from "class-variance-authority"
-import { tv } from "tailwind-variants"
 
 export const SignUpFormVariants = cva("", {
   variants: {
