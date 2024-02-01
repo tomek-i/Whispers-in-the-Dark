@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app"
 import { connectAuthEmulator, getAuth } from "firebase/auth"
 import { connectDatabaseEmulator, getDatabase } from "firebase/database"
+import { connectFirestoreEmulator, getFirestore } from "firebase/firestore"
 import { getMessaging, getToken } from "firebase/messaging"
 
 import { env } from "@/env/client.env"
@@ -27,6 +28,9 @@ const firebase_app = initializeApp(firebaseConfig)
 
 // Initialize Realtime Database and get a reference to the service
 const firebase_database = getDatabase(firebase_app)
+
+const firebase_firestore = getFirestore(firebase_app)
+
 let firebase_messaging = null
 if (typeof window !== "undefined") {
   // Code that relies on browser-specific APIs goes here
@@ -43,6 +47,7 @@ const firebase_auth = getAuth(firebase_app)
 if (process.env.NODE_ENV === "development") {
   connectDatabaseEmulator(firebase_database, "127.0.0.1", 8080)
   connectAuthEmulator(firebase_auth, "http://localhost:9099")
+  connectFirestoreEmulator(firebase_firestore, "localhost", 8080)
 }
 
 export const firebase = {
@@ -50,5 +55,6 @@ export const firebase = {
   auth: firebase_auth,
   // analytics: firebase_analytics,
   database: firebase_database,
+  firestore: firebase_firestore,
   messaging: firebase_messaging,
 }
