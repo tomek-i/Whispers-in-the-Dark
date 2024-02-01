@@ -1,37 +1,57 @@
 # Characters
 
+| Name      | Alignment | Alternative Name           |
+| --------- | --------- | -------------------------- |
+| Citizen   | 😇 Good   |                            |
+| Outcast   | 😇 Good   |                            |
+| Servants  | 😈Evil    | Conspirators / Dark Agents |
+| Devils    | 😈Evil    | Overlords                  |
+| Wanderers | 🌀Neutral | Wayfarer / Lost Souls      |
+
 ## Citizens
 
-Washerwoman -> Whispering Tide
-Librarian -> Keeper of Whispers / Lore Guardian
-Investigator -> Seeker of Secrets
-Chef -> Culinary Conjurer
-Empath -> Soul Whisperer
-Fortune Teller -> Oracle of Secrets / oracle of shadows
-Undertaker -> Keeper of Shadows / Keeper of Nightfall
-Monk -> Serene Sentinel /Mystic Sentinel / Sage
-Ravenkeeper -> Nightbird Guardian / Keeper of Nightbirds / Nightbird Keeper
-Virgin -> Untainted Spirit / Pure Soul
-Slayer -> Silent Slayer / Shadow Hunter
-Soldier -> Guardian Sentinel / Guardian of the Night
-Mayor -> Master of Secrets / Master of Shadows
+| Name               | Alternate Name                          | Ability |
+| ------------------ | --------------------------------------- | ------- |
+| Whispering Tide    |                                         |         |
+| Keeper of Whispers | Lore Guardian                           |         |
+| Seeker of Secrets  |                                         |         |
+| Culinary Conjurer  |                                         |         |
+| Soul Whisperer     |                                         |         |
+| Oracle of Secrets  | Oracle of Shadows                       |         |
+| Keeper of Shadows  | Keeper of Nightfall                     |         |
+| Serene Sentinel    | Mystic Sentinel / Sage                  |         |
+| Nightbird Guardian | Keeper of Nightbirds / Nightbird Keeper |         |
+| Untainted Spirit   | Pure Soul                               |         |
+| Silent Slayer      | Shadow Hunter                           |         |
+| Guardian Sentinel  | Guardian of the Night                   |         |
+| Master of Secrets  | Master of Shadows                       |         |
 
 ## Outcast
 
-Butler -> Silent Hand / Shadow Servant
-Drunk -> Reveler in Darkness /
-Recluse -> Solitary Watcher / Loner in shadows
-Saint -> Sacred Guardian / Virtuous Guardian /
+| Name                | Alternate Name    | Ability |
+| ------------------- | ----------------- | ------- |
+| Silent Hand         | Shadow Servant    |         |
+| Reveler in Darkness |                   |         |
+| Solitary Watcher    | Loner in Shadows  |         |
+| Sacred Guardian     | Virtuous Guardian |         |
 
-## Servants
+## Servants / Conspirators / Dark Agents
 
-Baron -> Baron of Secrets / Baron of shadows
-Poisoner -> Venomous Alchemist / Toxicologist
-Scarlet Woman -> Seductive Siren / Temptress of Shadows / Sireen / Succubus
-Spy -> Whispering Spy / Agent of Shadows / Whisperer
+| Name               | Alternate Name                           | Ability |
+| ------------------ | ---------------------------------------- | ------- |
+| Baron of Secrets   | Baron of Shadows                         |         |
+| Venomous Alchemist | Toxicologist                             |         |
+| Seductive Siren    | Temptress of Shadows / Sireen / Succubus |         |
+| Whispering Spy     | Agent of Shadows / Whisperer             |         |
 
-## Overlords
+## Overlords / Devils
 
-Imp -> Imposter
+| Name     | Alternate Name | Ability |
+| -------- | -------------- | ------- |
+| Imposter |                |         |
 
 ## Wanderers / Wayfarer
+
+| Name | Alternate Name | Ability |
+| ---- | -------------- | ------- |
+|      |                |         |
