@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app"
 import { getDatabase } from "firebase/database"
+import { getMessaging } from "firebase/messaging"
 import { env } from "@/env/client.env"
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -25,8 +26,12 @@ const firebase_app = initializeApp(firebaseConfig)
 // Initialize Realtime Database and get a reference to the service
 const firebase_database = getDatabase(firebase_app)
 
+// Initialize Firebase Cloud Messaging and get a reference to the service
+const firebase_messaging = getMessaging(firebase_app)
+
 export const firebase = {
   app: firebase_app,
   // analytics: firebase_analytics,
   database: firebase_database,
+  messaging: firebase_messaging,
 }
