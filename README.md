@@ -1,8 +1,8 @@
-# Blood on the Clock
+# Whispers in the Dark
 
-![blood on the clock logo](./.github/assets/project-logo-vertical.jpg)
+![Whispers in the Dark logo](./.github/assets/project-logo-vertical.jpg)
 
-Welcome to the _Blood on the Clock_, an open-source template for the game. 🌍
+Welcome to the _Whispers in the Dark_, an open-source template for the game. 🌍
 
 ## Features
 
@@ -33,7 +33,7 @@ Welcome to the _Blood on the Clock_, an open-source template for the game. 🌍
 
 ## Table of Contents
 
-- [Blood on the Clock](#blood-on-the-clock)
+- [Whispers in the Dark](#whispers-in-the-dark)
   - [Features](#features)
   - [Table of Contents](#table-of-contents)
   - [🎯 Getting Started](#-getting-started)
@@ -66,7 +66,7 @@ To get started with this boilerplate, follow these steps:
 
 ```bash
 ## Don't forget to ⭐ star and fork it first :)
-git clone https://github.com/tomek-i/BloodOnTheClock.git
+git clone https://github.com/tomek-i/whispers-in-the-dark.git
 ```
 
 2. Install the dependencies:

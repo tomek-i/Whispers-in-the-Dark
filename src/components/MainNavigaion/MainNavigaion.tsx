@@ -22,7 +22,13 @@ export const MainNavigaion: React.FC<MainNavigaionProps> = ({
       <div className="px-3">
         <Link href="/">
           <div className="relative h-10 w-10 rounded-full">
-            <Image className="rounded-full" src="/blood-on-the-clock.jpg" alt="logo" objectFit="cover" layout="fill" />
+            <Image
+              className="rounded-full"
+              src="/whispers-in-the-dark.jpg"
+              alt="logo"
+              objectFit="cover"
+              layout="fill"
+            />
           </div>
         </Link>
       </div>
@@ -34,7 +40,7 @@ export const MainNavigaion: React.FC<MainNavigaionProps> = ({
               <>
                 <ul className="mr-8 flex items-center space-x-4 ">
                   <li className="">
-                    <Link href="/dashboard"> Dashboard</Link>
+                    <Link href="/dashboard">Dashboard</Link>
                   </li>
                   <li className="">
                     <Link href="/games">Games</Link>
