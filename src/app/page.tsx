@@ -34,6 +34,7 @@ export default function Web() {
 
   const onMessageListener = () =>
     new Promise((resolve) => {
+      if (firebase.messaging === null) return
       onMessage(firebase.messaging, (payload) => {
         console.log("payload", payload)
         resolve(payload)
@@ -44,16 +45,19 @@ export default function Web() {
     console.log({ payload })
   })
   async function requestPermission() {
+    if (typeof window === "undefined") return
     //requesting permission using Notification API
     const permission = await Notification.requestPermission()
 
     if (permission === "granted") {
-      const token = await getToken(firebase.messaging, {
-        vapidKey: env.NEXT_PUBLIC_FIREBASE_MESSAGING_VAPID_KEY,
-      })
+      if (firebase.messaging) {
+        const token = await getToken(firebase.messaging, {
+          vapidKey: env.NEXT_PUBLIC_FIREBASE_MESSAGING_VAPID_KEY,
+        })
 
-      //We can send token to server
-      console.log("Token generated : ", token)
+        //We can send token to server
+        console.log("Token generated : ", token)
+      }
     } else if (permission === "denied") {
       //notifications are blocked
       alert("You denied for the notification")

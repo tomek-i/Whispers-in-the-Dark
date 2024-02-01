@@ -27,17 +27,20 @@ const firebase_app = initializeApp(firebaseConfig)
 
 // Initialize Realtime Database and get a reference to the service
 const firebase_database = getDatabase(firebase_app)
+let firebase_messaging = null
+if (typeof window !== "undefined") {
+  // Code that relies on browser-specific APIs goes here
+  firebase_messaging = getMessaging(firebase_app)
 
+  getToken(firebase_messaging, {
+    vapidKey: env.NEXT_PUBLIC_FIREBASE_MESSAGING_VAPID_KEY,
+  })
+}
 // Initialize Firebase Cloud Messaging and get a reference to the service
-const firebase_messaging = getMessaging(firebase_app)
 
 const firebase_auth = getAuth(firebase_app)
 
-getToken(firebase_messaging, {
-  vapidKey: env.NEXT_PUBLIC_FIREBASE_MESSAGING_VAPID_KEY,
-})
-
-if (window.location.hostname === "localhost" || process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === "development") {
   connectDatabaseEmulator(firebase_database, "127.0.0.1", 8080)
   connectAuthEmulator(firebase_auth, "http://localhost:9099")
 }

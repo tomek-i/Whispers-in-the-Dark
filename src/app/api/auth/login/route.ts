@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server"
 import signIn from "@/lib/auth/signin"
 
-export async function POST(request: NextRequest, context: { params: any }) {
+export async function POST(_request: NextRequest, context: { params: any }) {
   console.log({ context: context.params })
   const { username, password } = context.params
   const { result, error } = await signIn(username, password)
