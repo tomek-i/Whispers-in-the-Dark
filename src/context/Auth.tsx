@@ -1,8 +1,6 @@
-import { getAuth, onAuthStateChanged, User } from "firebase/auth"
+import { onAuthStateChanged, User } from "firebase/auth"
 import React, { createContext, FC, useContext, useEffect, useState } from "react"
 import { firebase } from "@/lib/firebase"
-
-const auth = getAuth(firebase.app)
 
 type AuthContextType = Record<string, any>
 
@@ -16,8 +14,9 @@ const AuthContextProvider: FC<React.PropsWithChildren> = ({ children }) => {
   const [loading, setLoading] = useState(true)
 
   //TODO: add error handling
+
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(firebase.auth, (user) => {
       //TODO: can be simplified to just setUser(user)
       if (user) {
         setUser(user)
