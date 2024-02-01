@@ -18,7 +18,7 @@ export const MainNavigaion: React.FC<MainNavigaionProps> = ({
   const { user } = useAuthContext()
 
   return (
-    <nav className="flex justify-between bg-gray-100 py-2 text-gray-900 dark:bg-gray-800 lg:py-4">
+    <nav className="flex flex-wrap justify-between bg-gray-100 py-2 text-gray-900 dark:bg-gray-800 lg:py-4">
       <div className="px-3">
         <Link href="/">
           <div className="relative h-10 w-10 rounded-full">
@@ -28,15 +28,15 @@ export const MainNavigaion: React.FC<MainNavigaionProps> = ({
       </div>
 
       <div className="flex items-center">
-        <div className=" mt-2  grow basis-[100%] items-center lg:mt-0 lg:!flex lg:basis-auto">
+        <div className="grow items-center ">
           <div className="mr-4 flex items-center space-x-4">
             {user && (
               <>
-                <ul className="mr-8 flex space-x-4">
-                  <li>
+                <ul className="mr-8 flex items-center space-x-4 ">
+                  <li className="">
                     <Link href="/dashboard"> Dashboard</Link>
                   </li>
-                  <li>
+                  <li className="">
                     <Link href="/games">Games</Link>
                   </li>
                 </ul>
@@ -45,8 +45,8 @@ export const MainNavigaion: React.FC<MainNavigaionProps> = ({
 
             {user && (
               <>
-                <span className="mr-3 cursor-default">{user.email}</span>
-                <div className="h-12 w-12 rounded-full bg-slate-600 hover:bg-slate-400" />
+                <span className="mr-3 cursor-default ">{user.email}</span>
+                <div className="h-10 w-10 rounded-full bg-slate-600 hover:bg-slate-400" />
               </>
             )}
             {!user && (
