@@ -37,3 +37,5 @@ yarn-error.log*
 analyze/nodejs.html
 .env.production
 *.log
+
+.vercel
