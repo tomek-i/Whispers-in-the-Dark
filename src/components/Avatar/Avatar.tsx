@@ -1,6 +1,6 @@
 import { type VariantProps } from "class-variance-authority"
 import { clsx } from "clsx"
-import Image from "next/image"
+import Image from "next/legacy/image"
 import React from "react"
 import { twMerge } from "tailwind-merge"
 import { AvatarVariants } from "./Avatar.variants"
