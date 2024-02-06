@@ -9,6 +9,7 @@ import { MainNavigaion } from "@/components/MainNavigaion"
 import "react-toastify/dist/ReactToastify.css"
 import { env } from "@/env/client.env"
 import { firebase } from "@/lib/firebase"
+import { useFirebaseMessaging } from "@/hooks"
 
 // export const metadata: Metadata = {
 //   title: "Whispers in the Dark - Tomek Iwainski",
@@ -28,49 +29,11 @@ import { firebase } from "@/lib/firebase"
 // }
 
 export default function Web() {
-  // onMessage(messaging, (payload) => {
-  //   toast(payload.notification)
-  // })
+  useFirebaseMessaging()
 
-  const onMessageListener = () =>
-    new Promise((resolve) => {
-      if (firebase.messaging === null) return
-      onMessage(firebase.messaging, (payload) => {
-        console.log("payload", payload)
-        resolve(payload)
-      })
-    })
-
-  onMessageListener().then((payload) => {
-    console.log({ payload })
-  })
-  async function requestPermission() {
-    if (typeof window === "undefined") return
-    //requesting permission using Notification API
-    const permission = await Notification.requestPermission()
-
-    if (permission === "granted") {
-      if (firebase.messaging) {
-        const token = await getToken(firebase.messaging, {
-          vapidKey: env.NEXT_PUBLIC_FIREBASE_MESSAGING_VAPID_KEY,
-        })
-
-        //We can send token to server
-        console.log("Token generated : ", token)
-      }
-    } else if (permission === "denied") {
-      //notifications are blocked
-      alert("You denied for the notification")
-    }
-  }
-
-  useEffect(() => {
-    requestPermission()
-  }, [])
-
-  const notify = () => toast("Wow so easy!")
   return (
     <>
+      <ToastContainer />
       <MainNavigaion />
       <section className="">
         <div className="mx-auto grid max-w-screen-xl px-4 py-8 text-center lg:py-16">
@@ -87,11 +50,9 @@ export default function Web() {
             <Button href="https://github.com/tomek-i/whispers-in-the-dark" className="mr-3">
               Get started
             </Button>
-            <button onClick={notify}>Notify!</button>
           </div>
         </div>
       </section>
-      <ToastContainer />
     </>
   )
 }

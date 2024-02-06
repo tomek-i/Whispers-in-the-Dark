@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app"
 import { connectAuthEmulator, getAuth } from "firebase/auth"
 import { connectDatabaseEmulator, getDatabase } from "firebase/database"
 import { connectFirestoreEmulator, getFirestore } from "firebase/firestore"
-import { getMessaging, getToken } from "firebase/messaging"
+import { Messaging } from "firebase/messaging"
 
 import { env } from "@/env/client.env"
 
@@ -31,15 +31,6 @@ const firebase_database = getDatabase(firebase_app)
 
 const firebase_firestore = getFirestore(firebase_app)
 
-let firebase_messaging = null
-if (typeof window !== "undefined") {
-  // Code that relies on browser-specific APIs goes here
-  firebase_messaging = getMessaging(firebase_app)
-
-  getToken(firebase_messaging, {
-    vapidKey: env.NEXT_PUBLIC_FIREBASE_MESSAGING_VAPID_KEY,
-  })
-}
 // Initialize Firebase Cloud Messaging and get a reference to the service
 
 const firebase_auth = getAuth(firebase_app)
@@ -55,6 +46,8 @@ export const firebase = {
   auth: firebase_auth,
   // analytics: firebase_analytics,
   database: firebase_database,
+  //NOTE: i think this is more for web push notifications not realtime messaging
+  messaging: null as Messaging | null,
+  //NOTE: this is the realtime database which may can be used for messaging
   firestore: firebase_firestore,
-  messaging: firebase_messaging,
 }
