@@ -18,7 +18,7 @@
     "test:watch": "cross-env FORCE_COLOR=1 jest --watch --passWithNoTests",
     "e2e:headless": "playwright test",
     "e2e:ui": "playwright test --ui",
-    "fb": "firebase emulators:start",
+    "firebase:start": "firebase emulators:start",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "preinstall": "npx npm-only-allow@latest --PM yarn",
     "postinstall": "npx patch-package -y",
