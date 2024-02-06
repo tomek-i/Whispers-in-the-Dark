@@ -7,6 +7,7 @@ import React from "react"
 import { useAuthContext } from "@/context"
 import { firebase } from "@/lib/firebase"
 import { MainNavigaionVariants } from "./MainNavigaion.variants"
+import { Avatar } from "../Avatar"
 
 type MainNavigaionProps = { disabled?: boolean } & React.HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof MainNavigaionVariants>
@@ -23,15 +24,7 @@ export const MainNavigaion: React.FC<MainNavigaionProps> = ({
     <nav className="flex flex-wrap justify-between bg-gray-100 py-2 text-gray-900 dark:bg-gray-800 lg:py-4">
       <div className="px-3">
         <Link href="/">
-          <div className="relative h-10 w-10 rounded-full">
-            <Image
-              className="rounded-full"
-              src="/whispers-in-the-dark.jpg"
-              alt="logo"
-              objectFit="cover"
-              layout="fill"
-            />
-          </div>
+          <Avatar src="/whispers-in-the-dark.jpg" alt="logo" />
         </Link>
       </div>
 
