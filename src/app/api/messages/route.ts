@@ -16,6 +16,6 @@ export async function POST(request: NextRequest) {
 
   //TODO: is there a way to send a message directly to a specific client/user?
   // Trigger the 'message' event on the 'whsipers-in-the-dark' in Pusher
-  await pusher.trigger("whsipers-in-the-dark", "message", message)
+  await pusher.trigger("whsipers-in-the-dark", "message", "Response: " + message)
   return Response.json({ status: 200, ok: true, data: "Message sent!", message })
 }
