@@ -27,12 +27,12 @@ function OK(data: any) {
     status: 200,
   })
 }
-function Created(data: any) {
-  return new Response(JSON.stringify({ error: null, data }), {
-    headers: { "Content-Type": "application/json" },
-    status: 201,
-  })
-}
+// function Created(data: any) {
+//   return new Response(JSON.stringify({ error: null, data }), {
+//     headers: { "Content-Type": "application/json" },
+//     status: 201,
+//   })
+// }
 function NoContent(data: any) {
   return new Response("", {
     headers: { "Content-Type": "application/json" },
