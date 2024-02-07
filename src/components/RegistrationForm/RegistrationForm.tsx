@@ -20,7 +20,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
   const rgba = "rgba(255,255,255,0.8)"
   return (
     <>
-      <div className="fixed left-0 top-0 flex h-full w-full items-center justify-center text-black">
+      <div className="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center text-black">
         <div className="relative rounded-lg p-8">
           <form className="flex flex-col space-y-4">
             <div className="">
