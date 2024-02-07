@@ -1,21 +1,15 @@
 "use client"
-import { getToken, onMessage } from "firebase/messaging"
 import { Metadata } from "next"
-import Image from "next/legacy/image"
 import { useRouter } from "next/navigation"
 import Pusher from "pusher-js"
 import { useEffect, useRef, useState } from "react"
-import { toast, ToastContainer } from "react-toastify"
-import { Button } from "@/components/Button/Button"
+import { ToastContainer } from "react-toastify"
 import { GameTitle } from "@/components/GameTitle"
 import { MainNavigaion } from "@/components/MainNavigaion"
-import "react-toastify/dist/ReactToastify.css"
 import { Overlay } from "@/components/Overlay"
 import { RegistrationForm } from "@/components/RegistrationForm"
 import { env } from "@/env/client.env"
 import { useFirebaseMessaging } from "@/hooks"
-import { firebase } from "@/lib/firebase"
-
 import { Messaging } from "@/lib/game/messages"
 
 // export const metadata: Metadata = {
@@ -39,7 +33,7 @@ export default function Web() {
   useFirebaseMessaging()
 
   const [showVideo, setShowVideo] = useState(false)
-  const [showMessaging, setShowMessaging] = useState(false)
+  const [showMessaging, setShowMessaging] = useState(true)
   const [showLoginForm, setShowLoginForm] = useState(false)
   const [showRegistrationForm, setRegistrationForm] = useState(false)
 
@@ -95,7 +89,6 @@ export default function Web() {
 
   return (
     <>
-      <ToastContainer />
       <MainNavigaion
         onLoginClick={() => {
           console.log("LoginCLickedd")
@@ -108,27 +101,27 @@ export default function Web() {
         }}
       />
 
-      {showMessaging && (
-        <>
-          <div className="messages">
-            {messages.map((message: any, index: number) => (
-              <pre key={index}>{JSON.stringify(message)}</pre>
-            ))}
-          </div>
-          <div className="message-input">
-            <input
-              type="text"
-              className="text-black"
-              value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
-              placeholder="Enter your message..."
-            />
-            <button onClick={handleSendMessage}>Send</button>
-          </div>
-        </>
-      )}
+      {/* {showMessaging && ( */}
+      <>
+        <div className="messages">
+          {messages.map((message: any, index: number) => (
+            <pre key={index}>{JSON.stringify(message)}</pre>
+          ))}
+        </div>
+        <div className="message-input">
+          <input
+            type="text"
+            className="text-black"
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            placeholder="Enter your message..."
+          />
+          <button onClick={handleSendMessage}>Send</button>
+        </div>
+      </>
+      {/* )} */}
       <section className="">
-        {showVideo && (
+        {/* {showVideo && (
           <>
             <video
               ref={videoRef}
@@ -138,7 +131,7 @@ export default function Web() {
             />
             <button onClick={handlePlayVideo}>Play Video</button>
           </>
-        )}
+        )} */}
 
         <div className="mx-auto  max-w-screen-xl text-center">
           <div className="mx-auto flex flex-col items-center place-self-center text-center align-middle">
