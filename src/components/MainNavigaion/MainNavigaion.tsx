@@ -30,9 +30,7 @@ export const MainNavigaion: React.FC<MainNavigaionProps> = ({
   return (
     <nav className="relative z-50 flex flex-wrap justify-between bg-gray-900 py-2 text-gray-900 dark:bg-gray-800 lg:py-4">
       <div className="px-3">
-        <Link href="/">
-          <Avatar src="/shadows-unveiled.jpg" alt="logo" />
-        </Link>
+        <Link href="/">{/* <Avatar src="/shadows-unveiled.jpg" alt="logo" /> */}</Link>
       </div>
 
       <div className="flex items-center">

@@ -33,7 +33,7 @@ export default function Web() {
   useFirebaseMessaging()
 
   const [showVideo, setShowVideo] = useState(false)
-  const [showMessaging, setShowMessaging] = useState(true)
+  const [showMessaging, setShowMessaging] = useState(false)
   const [showLoginForm, setShowLoginForm] = useState(false)
   const [showRegistrationForm, setRegistrationForm] = useState(false)
 
@@ -101,27 +101,27 @@ export default function Web() {
         }}
       />
 
-      {/* {showMessaging && ( */}
-      <>
-        <div className="messages">
-          {messages.map((message: any, index: number) => (
-            <pre key={index}>{JSON.stringify(message)}</pre>
-          ))}
-        </div>
-        <div className="message-input">
-          <input
-            type="text"
-            className="text-black"
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-            placeholder="Enter your message..."
-          />
-          <button onClick={handleSendMessage}>Send</button>
-        </div>
-      </>
-      {/* )} */}
+      {showMessaging && (
+        <>
+          <div className="messages">
+            {messages.map((message: any, index: number) => (
+              <pre key={index}>{JSON.stringify(message)}</pre>
+            ))}
+          </div>
+          <div className="message-input">
+            <input
+              type="text"
+              className="text-black"
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+              placeholder="Enter your message..."
+            />
+            <button onClick={handleSendMessage}>Send</button>
+          </div>
+        </>
+      )}
       <section className="">
-        {/* {showVideo && (
+        {showVideo && (
           <>
             <video
               ref={videoRef}
@@ -131,7 +131,7 @@ export default function Web() {
             />
             <button onClick={handlePlayVideo}>Play Video</button>
           </>
-        )} */}
+        )}
 
         <div className="mx-auto  max-w-screen-xl text-center">
           <div className="mx-auto flex flex-col items-center place-self-center text-center align-middle">
