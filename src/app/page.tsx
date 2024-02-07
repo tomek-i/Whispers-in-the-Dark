@@ -2,12 +2,16 @@
 import { getToken, onMessage } from "firebase/messaging"
 import { Metadata } from "next"
 import Image from "next/legacy/image"
+import { useRouter } from "next/navigation"
 import Pusher from "pusher-js"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { toast, ToastContainer } from "react-toastify"
 import { Button } from "@/components/Button/Button"
+import { GameTitle } from "@/components/GameTitle"
 import { MainNavigaion } from "@/components/MainNavigaion"
 import "react-toastify/dist/ReactToastify.css"
+import { Overlay } from "@/components/Overlay"
+import { RegistrationForm } from "@/components/RegistrationForm"
 import { env } from "@/env/client.env"
 import { useFirebaseMessaging } from "@/hooks"
 import { firebase } from "@/lib/firebase"
@@ -33,6 +37,24 @@ import { Messaging } from "@/lib/game/messages"
 
 export default function Web() {
   useFirebaseMessaging()
+
+  const [showVideo, setShowVideo] = useState(false)
+  const [showMessaging, setShowMessaging] = useState(false)
+  const [showLoginForm, setShowLoginForm] = useState(false)
+  const [showRegistrationForm, setRegistrationForm] = useState(false)
+
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const router = useRouter()
+
+  const handlePlayVideo = () => {
+    if (videoRef.current) {
+      videoRef.current.play()
+    }
+  }
+
+  const handleVideoEnd = () => {
+    router.push("/another-page")
+  }
 
   //TODO: create a hook which returns the pusher instance but also pre-defined channels and or triggers eg. new player joined
   const [messages, setMessages] = useState<any>([])
@@ -74,37 +96,55 @@ export default function Web() {
   return (
     <>
       <ToastContainer />
-      <MainNavigaion />
-      <div className="messages">
-        {messages.map((message: any, index: number) => (
-          <pre key={index}>{JSON.stringify(message)}</pre>
-        ))}
-      </div>
-      <div className="message-input">
-        <input
-          type="text"
-          className="text-black"
-          value={newMessage}
-          onChange={(e) => setNewMessage(e.target.value)}
-          placeholder="Enter your message..."
-        />
-        <button onClick={handleSendMessage}>Send</button>
-      </div>
+      <MainNavigaion
+        onLoginClick={() => {
+          console.log("LoginCLickedd")
+          setRegistrationForm(false)
+          setShowLoginForm(true)
+        }}
+        onSignupClick={() => {
+          setShowLoginForm(false)
+          setRegistrationForm(true)
+        }}
+      />
+
+      {showMessaging && (
+        <>
+          <div className="messages">
+            {messages.map((message: any, index: number) => (
+              <pre key={index}>{JSON.stringify(message)}</pre>
+            ))}
+          </div>
+          <div className="message-input">
+            <input
+              type="text"
+              className="text-black"
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+              placeholder="Enter your message..."
+            />
+            <button onClick={handleSendMessage}>Send</button>
+          </div>
+        </>
+      )}
       <section className="">
-        <div className="mx-auto grid max-w-screen-xl px-4 py-8 text-center lg:py-16">
+        {showVideo && (
+          <>
+            <video
+              ref={videoRef}
+              src="ally-enter.mp4"
+              onEnded={handleVideoEnd}
+              style={{ position: "fixed", right: 0, bottom: 0, minWidth: "100%", minHeight: "100%", zIndex: -100 }}
+            />
+            <button onClick={handlePlayVideo}>Play Video</button>
+          </>
+        )}
+
+        <div className="mx-auto  max-w-screen-xl text-center">
           <div className="mx-auto flex flex-col items-center place-self-center text-center align-middle">
-            <h1 className="mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight dark:text-white md:text-5xl xl:text-6xl">
-              Whispers in the Dark
-            </h1>
-            <Image src="/whispers-in-the-dark.jpg" width={640 / 2} height={832 / 2} alt="Whispers in the Dark logo" />
-
-            <p className="mb-6 max-w-2xl font-light text-gray-500 dark:text-gray-400 md:text-lg lg:mb-8 lg:text-xl">
-              Are you interested in helping and contributing to this project?
-            </p>
-
-            <Button href="https://github.com/tomek-i/whispers-in-the-dark" className="mr-3">
-              Get started
-            </Button>
+            <GameTitle />
+            {(showRegistrationForm || showLoginForm) && <Overlay />}
+            {showRegistrationForm && <RegistrationForm />}
           </div>
         </div>
       </section>
