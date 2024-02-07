@@ -60,13 +60,7 @@ export const MainNavigaion: React.FC<MainNavigaionProps> = ({
             )}
             {!user && (
               <>
-                <button
-                  onClick={() => {
-                    console.log("clciked")
-                    onLoginClick()
-                  }}
-                  className="rounded bg-slate-100 px-4 py-2 hover:text-primary-600"
-                >
+                <button onClick={onLoginClick} className="rounded bg-slate-100 px-4 py-2 hover:text-primary-600">
                   Login
                 </button>
                 <button
@@ -75,16 +69,6 @@ export const MainNavigaion: React.FC<MainNavigaionProps> = ({
                 >
                   Sign up for free
                 </button>
-                {/* <Link href="/login" type="button" className="rounded bg-slate-100 px-4 py-2 hover:text-primary-600">
-                  Login
-                </Link> */}
-                {/* <Link
-                  href="/signup"
-                  type="button"
-                  className="rounded bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 "
-                >
-                  Sign up for free
-                </Link> */}
               </>
             )}
           </div>
