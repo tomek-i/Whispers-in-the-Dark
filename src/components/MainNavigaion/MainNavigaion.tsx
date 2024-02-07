@@ -9,22 +9,29 @@ import { firebase } from "@/lib/firebase"
 import { MainNavigaionVariants } from "./MainNavigaion.variants"
 import { Avatar } from "../Avatar"
 
-type MainNavigaionProps = { disabled?: boolean } & React.HTMLAttributes<HTMLDivElement> &
+type MainNavigaionProps = {
+  disabled?: boolean
+
+  onLoginClick: () => void
+  onSignupClick: () => void
+} & React.HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof MainNavigaionVariants>
 
 export const MainNavigaion: React.FC<MainNavigaionProps> = ({
   className = "",
   size = "default",
   variant = "default",
+  onLoginClick,
+  onSignupClick,
   ...props
 }) => {
   const { user } = useAuthContext()
 
   return (
-    <nav className="flex flex-wrap justify-between bg-gray-100 py-2 text-gray-900 dark:bg-gray-800 lg:py-4">
+    <nav className="relative z-50 flex flex-wrap justify-between bg-gray-900 py-2 text-gray-900 dark:bg-gray-800 lg:py-4">
       <div className="px-3">
         <Link href="/">
-          <Avatar src="/whispers-in-the-dark.jpg" alt="logo" />
+          <Avatar src="/shadows-unveiled.jpg" alt="logo" />
         </Link>
       </div>
 
@@ -53,16 +60,31 @@ export const MainNavigaion: React.FC<MainNavigaionProps> = ({
             )}
             {!user && (
               <>
-                <Link href="/login" type="button" className="rounded bg-slate-100 px-4 py-2 hover:text-primary-600">
+                <button
+                  onClick={() => {
+                    console.log("clciked")
+                    onLoginClick()
+                  }}
+                  className="rounded bg-slate-100 px-4 py-2 hover:text-primary-600"
+                >
                   Login
-                </Link>
-                <Link
+                </button>
+                <button
+                  onClick={onSignupClick}
+                  className="rounded bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 "
+                >
+                  Sign up for free
+                </button>
+                {/* <Link href="/login" type="button" className="rounded bg-slate-100 px-4 py-2 hover:text-primary-600">
+                  Login
+                </Link> */}
+                {/* <Link
                   href="/signup"
                   type="button"
                   className="rounded bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 "
                 >
                   Sign up for free
-                </Link>
+                </Link> */}
               </>
             )}
           </div>
