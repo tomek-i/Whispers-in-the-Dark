@@ -18,21 +18,22 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
   // return <div className={twMerge(clsx(RegistrationFormVariants({ variant, size, className })))} {...props}></div>
 
   const rgba = "rgba(255,255,255,0.8)"
+
   return (
     <>
-      <div className="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center text-black">
-        <div className="relative rounded-lg p-8">
+      <div className="top-0 left-0 z-50 flex items-center justify-center w-full h-full text-black ">
+        <div className="relative p-8 rounded-lg">
           <form className="flex flex-col space-y-4">
             <div className="">
-              {/* <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                Username
+              {/* <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                email
               </label> */}
               <input
                 type="text"
-                id="username"
-                name="username"
-                placeholder="Username"
-                className="rounded-md border border-gray-300 p-2 text-black"
+                id="email"
+                name="email"
+                placeholder="email"
+                className="p-2 text-black border border-gray-300 rounded-md"
                 style={{ backgroundColor: rgba }}
               />
             </div>
@@ -45,7 +46,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                 id="password"
                 name="password"
                 placeholder="Password"
-                className="rounded-md border border-gray-300 p-2"
+                className="p-2 border border-gray-300 rounded-md"
                 style={{ backgroundColor: rgba }}
               />
             </div>
@@ -58,11 +59,11 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
                 id="playerName"
                 name="playerName"
                 placeholder="Player Name"
-                className="rounded-md border border-gray-300 p-2 text-black"
+                className="p-2 text-black border border-gray-300 rounded-md"
                 style={{ backgroundColor: rgba }}
               />
             </div>
-            <button type="submit" className="rounded-md bg-blue-500 px-4 py-2 text-white">
+            <button type="submit" className="px-4 py-2 text-white bg-blue-500 rounded-md">
               Register
             </button>
           </form>
