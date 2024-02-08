@@ -16,6 +16,50 @@ module.exports = {
   ],
   theme: {
     extend: {
+      transitionProperty: {
+        "blur-in": "filter",
+        "blur-out": "filter",
+        "fade-in": "opacity, filter",
+        lightning: "opacity",
+        "fade-out": "opacity, filter",
+      },
+      keyframes: {
+        lightning: {
+          "0%": { opacity: 0 },
+          "5%": { opacity: 0.33 },
+          "21%": { opacity: 1 },
+          "30%": { opacity: 0.1 },
+          "38%": { opacity: 0.76 },
+          "41%": { opacity: 0 },
+          "62%": { opacity: 0.43 },
+          "69%": { opacity: 0.23 },
+          "84%": { opacity: 0.13 },
+          "100%": { opacity: 0 },
+        },
+        "blur-in": {
+          "0%": { filter: "blur(0)" },
+          "100%": { filter: "blur(5px)" },
+        },
+        "blur-out": {
+          "100%": { filter: "blur(5px)" },
+          "0%": { filter: "blur(0)" },
+        },
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        "fade-out": {
+          "100%": { opacity: "1" },
+          "0%": { opacity: "0" },
+        },
+      },
+      animation: {
+        "blur-in": "blur-in 4s ease-in",
+        "blur-out": "blur-out 4s ease-out",
+        "fade-in": "fade-in 4s ease-in",
+        "fade-out": "fade-out 4s ease-out",
+        lightning: "lightning 1s ",
+      },
       colors: {
         primary: {
           50: "#eff6ff",
