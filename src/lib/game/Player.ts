@@ -1,3 +1,4 @@
+import { User } from "firebase/auth"
 import { Character } from "./characters"
 import { States } from "./enums"
 import { Game } from "./Game"
@@ -7,7 +8,7 @@ export class Player {
   #votes: boolean = true
   #state: States = States.Default
   game!: Game
-  constructor(public name: string) {}
+  constructor(public user: User) {}
 
   get character() {
     return this.#character!
