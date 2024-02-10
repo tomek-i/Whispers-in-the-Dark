@@ -9,4 +9,6 @@ export async function post<T>(url: string, data: T) {
   if (!res.ok) {
     console.error("failed to POST data")
   }
+
+  return res
 }
