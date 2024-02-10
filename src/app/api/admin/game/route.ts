@@ -21,7 +21,9 @@ export async function POST(request: NextRequest) {
 
   console.log("Saving game")
   try {
-    await setDoc(doc(firebase.firestore, "games", id), game)
+    await setDoc(doc(firebase.firestore, "games", id), {
+      ...game,
+    })
   } catch (error) {
     console.error(error)
   }
