@@ -26,12 +26,9 @@ const firebaseConfig = {
 const firebase_app = initializeApp(firebaseConfig)
 // const firebase_analytics = getAnalytics(firebase_app)
 
-// Initialize Realtime Database and get a reference to the service
 const firebase_database = getDatabase(firebase_app)
 
 const firebase_firestore = getFirestore(firebase_app)
-
-// Initialize Firebase Cloud Messaging and get a reference to the service
 
 const firebase_auth = getAuth(firebase_app)
 
