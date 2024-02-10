@@ -40,9 +40,6 @@ export const LoginForm: FC<LoginFormProps> = ({ className = "", variant = "defau
         <div className="relative rounded-lg p-8">
           <form className="flex flex-col space-y-4" onSubmit={handleForm}>
             <div className="">
-              {/* <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                email
-              </label> */}
               <input
                 type="text"
                 id="email"
@@ -54,9 +51,6 @@ export const LoginForm: FC<LoginFormProps> = ({ className = "", variant = "defau
               />
             </div>
             <div className="">
-              {/* <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Password
-              </label> */}
               <input
                 type="password"
                 id="password"
