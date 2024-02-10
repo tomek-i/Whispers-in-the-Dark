@@ -17,6 +17,7 @@ export class Game {
   #playerDeathEmitter: EventEmitter = new EventEmitter()
   #nightStartEmitter: EventEmitter = new EventEmitter()
   #nightEndEmitter: EventEmitter = new EventEmitter()
+  GameMaster: Player
 
   constructor(public gameMode: GameMode) {
     //TODO: probably not needed
