@@ -4,12 +4,13 @@ import { use, useEffect, useRef } from "react"
 import { GameTitle } from "@/components/GameTitle"
 import { Overlay } from "@/components/Overlay"
 import { useAuthContext } from "@/context"
+import { post } from "@/lib/http"
 
 export default function DashboardPage() {
-  const { user } = useAuthContext()
+  const { user, player } = useAuthContext()
   const router = useRouter()
   useEffect(() => {
-    console.log({ user })
+    console.log({ player })
     if (user == null) router.push("/")
   }, [router, user])
 
@@ -21,7 +22,7 @@ export default function DashboardPage() {
         </div>
         <div className="flex h-full flex-col items-center justify-center space-y-4">
           <span className="-mt-32 mb-8 text-center">
-            Welcome <br /> {user.email}
+            Welcome <br /> {user?.email}
           </span>
 
           {/* TODO: the 3d button effect pushes the content when pressed */}
@@ -30,8 +31,9 @@ export default function DashboardPage() {
             JOIN GAME
           </button>
           <button
-            onClick={() => {
-              console.log("//TODO: create new game session and redirect to game init page")
+            onClick={async () => {
+              const gmx = (await post("/api/admin/game", { player })) as any
+              console.log({ gmx })
             }}
             className="w-full rounded-sm border-b-4 border-b-red-700 bg-red-400 px-4 py-2 active:border-b-0"
           >

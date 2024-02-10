@@ -1,24 +1,38 @@
-import { get, ref, set } from "firebase/database"
+import { get, getDatabase, ref, set } from "firebase/database"
+import { doc, setDoc } from "firebase/firestore"
 import { NextRequest } from "next/server"
 import { firebase } from "@/lib/firebase"
 import { Game } from "@/lib/game/Game"
 import { GameMode } from "@/lib/game/gameModes"
+import { Player } from "@/lib/game/Player"
 import { Util } from "@/lib/util"
 
 export interface GameCreationPayload {
   id?: string
+  player: Player
 }
 export async function POST(request: NextRequest) {
-  let { id } = (await request.json()) as GameCreationPayload
+  let { id, player } = (await request.json()) as GameCreationPayload
   if (!id) id = Util.createRandomgameId()
 
   const game = new Game(GameMode.TroubleBrewing)
   game.code = id
+  game.GameMaster = player
   //TODO: store in firebase
   const db = firebase.database
-  console.log({ game })
-  set(ref(db, "games/" + id), JSON.stringify(game))
 
+  console.log("Saving game")
+  try {
+    await setDoc(doc(firebase.firestore, "games", id), game)
+
+    await set(ref(db, "games/" + id), JSON.stringify(game))
+
+    // set(ref(db, "games"), JSON.stringify(game))
+  } catch (error) {
+    console.error(error)
+  }
+
+  console.log("OOOOK")
   return Response.json({ status: "ok", id, game })
 }
 

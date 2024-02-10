@@ -1,10 +1,10 @@
+"use client"
 import { type VariantProps } from "class-variance-authority"
-import { clsx } from "clsx"
-import Image from "next/legacy/image"
-import React from "react"
-import { twMerge } from "tailwind-merge"
+
+import { useRouter } from "next/navigation"
+import React, { FormEvent, useState } from "react"
+import signUp from "@/lib/auth/singup"
 import { RegistrationFormVariants } from "./RegistrationForm.variants"
-import { Overlay } from "../Overlay"
 
 type RegistrationFormProps = { disabled?: false } & React.HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof RegistrationFormVariants>
@@ -15,55 +15,66 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
   variant = "default",
   ...props
 }) => {
-  // return <div className={twMerge(clsx(RegistrationFormVariants({ variant, size, className })))} {...props}></div>
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [playerName, setPlayerName] = useState("")
 
+  const router = useRouter()
+  // return <div className={twMerge(clsx(RegistrationFormVariants({ variant, size, className })))} {...props}></div>
+  const handleForm = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    const { result, error } = await signUp(email, password, playerName)
+
+    if (error) {
+      return console.log(error)
+    }
+
+    // else successful
+    console.log({ result })
+    return router.push("/login")
+  }
   const rgba = "rgba(255,255,255,0.8)"
 
   return (
     <>
-      <div className="top-0 left-0 z-50 flex items-center justify-center w-full h-full text-black ">
-        <div className="relative p-8 rounded-lg">
-          <form className="flex flex-col space-y-4">
+      <div className="left-0 top-0 z-50 flex h-full w-full items-center justify-center text-black ">
+        <div className="relative rounded-lg p-8">
+          <form className="flex flex-col space-y-4" onSubmit={handleForm}>
             <div className="">
-              {/* <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                email
-              </label> */}
               <input
                 type="text"
                 id="email"
                 name="email"
                 placeholder="email"
-                className="p-2 text-black border border-gray-300 rounded-md"
+                className="rounded-md border border-gray-300 p-2 text-black"
                 style={{ backgroundColor: rgba }}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="">
-              {/* <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Password
-              </label> */}
               <input
                 type="password"
                 id="password"
                 name="password"
                 placeholder="Password"
-                className="p-2 border border-gray-300 rounded-md"
+                className="rounded-md border border-gray-300 p-2"
                 style={{ backgroundColor: rgba }}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="">
-              {/* <label htmlFor="playerName" className="block text-sm font-medium text-gray-700">
-                Player Name
-              </label> */}
               <input
                 type="text"
                 id="playerName"
                 name="playerName"
                 placeholder="Player Name"
-                className="p-2 text-black border border-gray-300 rounded-md"
+                className="rounded-md border border-gray-300 p-2 text-black"
                 style={{ backgroundColor: rgba }}
+                onChange={(e) => setPlayerName(e.target.value)}
               />
             </div>
-            <button type="submit" className="px-4 py-2 text-white bg-blue-500 rounded-md">
+            <button type="submit" className="rounded-md bg-blue-500 px-4 py-2 text-white">
               Register
             </button>
           </form>

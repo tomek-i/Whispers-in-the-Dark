@@ -10,7 +10,7 @@ import { MainNavigaion } from "@/components/MainNavigaion"
 import { Overlay } from "@/components/Overlay"
 import { RegistrationForm } from "@/components/RegistrationForm"
 import { env } from "@/env/client.env"
-import { useFirebaseMessaging } from "@/hooks"
+// import { useFirebaseMessaging } from "@/hooks"
 import { Messaging } from "@/lib/game/messages"
 
 // export const metadata: Metadata = {
@@ -31,7 +31,7 @@ import { Messaging } from "@/lib/game/messages"
 // }
 
 export default function Web() {
-  useFirebaseMessaging()
+  // useFirebaseMessaging()
 
   const [showMessaging, setShowMessaging] = useState(false)
   const [showLoginForm, setShowLoginForm] = useState(false)
@@ -104,7 +104,7 @@ export default function Web() {
         <>
           <div
             className={`fixed inset-0 bg-black opacity-0  ${
-              showVideoOverlay ? "animate-fade-in animate-blur-in" : ""
+              showVideoOverlay ? "animate-blur-in animate-fade-in" : ""
             } transition-all ease-in-out`}
             style={{ zIndex: 19 }}
           ></div>
@@ -149,9 +149,9 @@ export default function Web() {
           </div>
         </>
       )}
-      <section className={`${showVideoOverlay ? "animate-blur-in z-50" : ""}`}>
-        <div className="max-w-screen-xl mx-auto text-center">
-          <div className="flex flex-col items-center mx-auto text-center align-middle place-self-center">
+      <section className={`${showVideoOverlay ? "z-50 animate-blur-in" : ""}`}>
+        <div className="mx-auto max-w-screen-xl text-center">
+          <div className="mx-auto flex flex-col items-center place-self-center text-center align-middle">
             {(showRegistrationForm || showLoginForm) && <Overlay />}
             {showLoginForm && (
               <LoginForm
