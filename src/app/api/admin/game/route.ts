@@ -18,16 +18,10 @@ export async function POST(request: NextRequest) {
   const game = new Game(GameMode.TroubleBrewing)
   game.code = id
   game.GameMaster = player
-  //TODO: store in firebase
-  const db = firebase.database
 
   console.log("Saving game")
   try {
     await setDoc(doc(firebase.firestore, "games", id), game)
-
-    await set(ref(db, "games/" + id), JSON.stringify(game))
-
-    // set(ref(db, "games"), JSON.stringify(game))
   } catch (error) {
     console.error(error)
   }
