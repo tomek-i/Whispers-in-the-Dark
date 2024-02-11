@@ -4,9 +4,10 @@ import { EventMessage } from "@/lib/message.service"
 import { pusher } from "@/lib/pusher"
 
 export async function POST(request: NextRequest) {
+  //TODO: this seems to be recieved twice
   const eventMessage = (await request.json()) as EventMessage<any>
 
-  //TODO: this seems to be recieved twice
+  //TODO: extract the event message to a class or something
   console.log("EVENT DATA RECIEVED:", { eventMessage })
 
   if (eventMessage.event === "player-joined") {

@@ -11,6 +11,8 @@ export default async function signIn(email: string, password: string) {
     error = e
   }
 
-  if (result) MessageService.setCurrentUser(result.user)
+  //TODO: need to check if this is working correctly or if we need to pass in the sender every time
+  if (result) MessageService.setSender(result.user)
+
   return { result, error }
 }

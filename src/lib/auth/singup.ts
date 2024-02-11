@@ -8,7 +8,6 @@ export default async function signUp(email: string, password: string, playerName
   let result = null,
     error = null
   try {
-    console.log({ auth })
     result = await createUserWithEmailAndPassword(auth, email, password)
 
     updateProfile(result.user, { displayName: playerName })
@@ -20,8 +19,8 @@ export default async function signUp(email: string, password: string, playerName
       lastname: "", //TODO: add lastname to signup form
     })
     // create a user-games document for the user, which basically stors the games the user has joined and played in
-    //good tutorial: https://www.youtube.com/watch?v=k4mjF4sPITE
-    // await setDoc(doc(firebase.firestore, "user-games", result.user.uid), {})
+    // good tutorial: https://www.youtube.com/watch?v=k4mjF4sPITE
+    await setDoc(doc(firebase.firestore, "user-games", result.user.uid), {})
   } catch (e) {
     error = e
   }

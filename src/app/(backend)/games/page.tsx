@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { Game } from "@/lib/game/Game"
+import { http } from "@/lib/http"
 
 type GameListResponse = {
   status: string
@@ -16,19 +17,13 @@ export default function GamesPage() {
   const [games, setGames] = useState<Game[]>()
 
   const loadAllGames = async () => {
-    const response = await fetch("/api/admin/game", { method: "GET" })
+    const data = await http.get<any>("/api/admin/game")
 
-    if (!response.ok) {
-      // Handle error
-      console.error("Failed to start new game")
-      return
-    }
-    const data = (await response.json()) as GameListResponse
-    console.log(data)
+    console.log("GAME LIST:", data)
     // Get the new game ID from the response
-    const gamesArray = Object.values(data.games).map((x) => JSON.parse(x)) as Game[]
+    // const gamesArray = Object.values(data.games).map((x) => JSON.parse(x)) as Game[]
 
-    setGames(gamesArray)
+    // setGames(gamesArray)
   }
   // Call loadAllGames when the component mounts
   useEffect(() => {

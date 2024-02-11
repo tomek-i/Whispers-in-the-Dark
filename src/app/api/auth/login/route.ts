@@ -7,11 +7,6 @@ export async function POST(request: NextRequest) {
   const { username, password } = request.json() as any
   const { result, error } = await signIn(username, password)
 
-  console.log({
-    result,
-    error,
-  })
-
   if (error) {
     return Response.json({ status: "error", error })
   }
