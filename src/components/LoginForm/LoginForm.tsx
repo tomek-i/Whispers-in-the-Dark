@@ -25,6 +25,7 @@ export const LoginForm: FC<LoginFormProps> = ({ className = "", variant = "defau
     const { result, error } = await signIn(email, password)
 
     if (error) {
+      //TODO: this needs to be a toast properly?
       return console.log(error)
     }
 
