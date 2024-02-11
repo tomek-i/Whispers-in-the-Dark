@@ -18,7 +18,7 @@ export default function DashboardPage() {
     <>
       <div className="flex h-screen flex-col items-center justify-center pt-8">
         <div className="mb-auto text-center">
-          <GameTitle className="animate-fade-in" />
+          <GameTitle />
         </div>
         <div className="flex h-full flex-col items-center justify-center space-y-4">
           <span className="-mt-32 mb-8 text-center">
