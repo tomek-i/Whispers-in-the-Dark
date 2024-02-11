@@ -1,7 +1,9 @@
 "use client"
 import { Metadata } from "next"
 import { useRouter } from "next/navigation"
-import { useRef, useState } from "react"
+import { useState } from "react"
+import { toast } from "react-toastify"
+import { GameTitle } from "@/components/GameTitle"
 import { LoginForm } from "@/components/LoginForm"
 import { MainNavigaion } from "@/components/MainNavigaion"
 import { Overlay } from "@/components/Overlay"
@@ -86,6 +88,7 @@ export default function Web() {
       <section className={``}>
         <div className="mx-auto max-w-screen-xl text-center">
           <div className="mx-auto flex flex-col items-center place-self-center text-center align-middle">
+            <GameTitle />
             {(showRegistrationForm || showLoginForm) && <Overlay />}
             {showLoginForm && (
               <LoginForm
@@ -97,6 +100,7 @@ export default function Web() {
               />
             )}
             {showRegistrationForm && <RegistrationForm />}
+            <div onClick={() => toast.success("test")}> TOAST Exxample</div>
           </div>
         </div>
       </section>
