@@ -1,10 +1,8 @@
 import Head from "next/head"
 
-import Image from "next/legacy/image"
-
-// import "react-toastify/dist/ReactToastify.css"
 import "../styles/tailwind.css"
 import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
