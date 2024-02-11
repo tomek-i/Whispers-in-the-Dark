@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { Card } from "@/components/Card"
 import { Game } from "@/lib/game/Game"
 import { http } from "@/lib/http"
 
@@ -17,33 +18,27 @@ export default function GamesPage() {
   const [games, setGames] = useState<Game[]>()
 
   const loadAllGames = async () => {
-    const data = await http.get<any>("/api/admin/game")
+    const response = await http.get<any>("/api/admin/game")
 
-    console.log("GAME LIST:", data)
-    // Get the new game ID from the response
-    // const gamesArray = Object.values(data.games).map((x) => JSON.parse(x)) as Game[]
-
-    // setGames(gamesArray)
+    setGames(response.games as Game[])
   }
-  // Call loadAllGames when the component mounts
   useEffect(() => {
     loadAllGames()
   }, [])
 
-  console.log({ games })
-  if (!games) {
-    return <div>Loading...</div>
-  }
-
   return (
-    <div>
-      {games.map((game) => {
+    <div className="flex w-auto flex-col space-y-4 text-slate-900">
+      {games?.map((game) => {
         return (
-          <div key={game.code}>
-            {game.code} {"=>"} {game.gameMode} <pre>{JSON.stringify(game)}</pre>
-            {/* TODO: should not be a link needs to be an API call  */}
-            <Link href={`/admin/game/join/${game.code}`}>Join game</Link>
-          </div>
+          <Card key={game.code}>
+            {game.code} {"=>"} {game.gameMode}
+            <pre>Night: {game.night}</pre>
+            <pre>Players: {game.players.length}</pre>
+            <pre>Created: null</pre>
+            <button className="rounded bg-slate-500 px-4 py-2 ">
+              <Link href={`/game/${game.code}`}>Join game {game.code}</Link>
+            </button>
+          </Card>
         )
       })}
     </div>
