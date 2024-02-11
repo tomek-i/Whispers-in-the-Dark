@@ -38,11 +38,7 @@ export default function Web() {
 
   //TODO: create a hook which returns the pusher instance but also pre-defined channels and or triggers eg. new player joined
   const [newMessage, setNewMessage] = useState("")
-  const [showVideo, setShowVideo] = useState(true)
-  const [showVideoOverlay, setShowVideoOverlay] = useState(false)
   const [hideContent, setHideContent] = useState(false)
-
-  const videoRef = useRef<HTMLVideoElement>(null)
 
   const handleSendMessage = () => {
     if (newMessage.trim() !== "") {
@@ -54,43 +50,8 @@ export default function Web() {
     }
   }
 
-  const handlePlayVideo = () => {
-    if (videoRef.current) {
-      videoRef.current.play()
-    }
-  }
-
-  const handleVideoEnd = () => {
-    setHideContent(true)
-
-    setTimeout(() => {
-      // Navigate to /dashboard after delay
-      router.push("/dashboard")
-    }, 50) // Delay in milliseconds, adjust as needed
-  }
-
-  if (hideContent) return <></>
-
   return (
     <>
-      {showVideo && (
-        <>
-          <div
-            className={`fixed inset-0 bg-black opacity-0  ${
-              showVideoOverlay ? "animate-blur-in animate-fade-in" : ""
-            } transition-all ease-in-out`}
-            style={{ zIndex: 19 }}
-          ></div>
-          <video
-            ref={videoRef}
-            src="ally-enter.mp4"
-            onEnded={handleVideoEnd}
-            className="fixed -z-[18]  object-contain"
-            style={{ left: "50%", transform: "translateX(-50%)" }}
-          />
-        </>
-      )}
-
       <MainNavigaion
         onLoginClick={() => {
           console.log("LoginCLickedd")
@@ -122,7 +83,7 @@ export default function Web() {
           </div>
         </>
       )}
-      <section className={`${showVideoOverlay ? "z-50 animate-blur-in" : ""}`}>
+      <section className={``}>
         <div className="mx-auto max-w-screen-xl text-center">
           <div className="mx-auto flex flex-col items-center place-self-center text-center align-middle">
             {(showRegistrationForm || showLoginForm) && <Overlay />}
@@ -130,8 +91,8 @@ export default function Web() {
               <LoginForm
                 onFormSubmit={() => {
                   setShowLoginForm(false)
-                  setShowVideoOverlay(true)
-                  handlePlayVideo()
+                  //TODO: how do we know that his was successfull?
+                  router.push("/dashboard")
                 }}
               />
             )}
