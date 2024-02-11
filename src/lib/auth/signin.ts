@@ -1,5 +1,6 @@
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { firebase } from "../firebase"
+import { MessageService } from "../message.service"
 
 export default async function signIn(email: string, password: string) {
   let result = null,
@@ -10,5 +11,6 @@ export default async function signIn(email: string, password: string) {
     error = e
   }
 
+  if (result) MessageService.setCurrentUser(result.user)
   return { result, error }
 }

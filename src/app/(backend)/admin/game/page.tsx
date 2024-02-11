@@ -27,7 +27,7 @@ export default function AdminDashboard() {
 
   const [gameId, setGameId] = useState("")
   useEffect(() => {
-    if (gameId === "") setGameId(Util.createRandomgameId())
+    if (gameId === "") setGameId(Util.createRandomGameId())
   }, [gameId])
 
   return (

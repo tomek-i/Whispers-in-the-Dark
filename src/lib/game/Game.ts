@@ -7,19 +7,22 @@ import { Player } from "./Player"
 
 export class Game {
   code: string = ""
-  #night: number = 1
+  night: number = 1
 
-  #players: Player[] = []
-
-  #charactersNotInPlay: Character[] = []
-  #charactersInPlay: Character[] = []
+  players: Player[] = []
+  GameMaster: Player
+  charactersNotInPlay: Character[] = []
+  charactersInPlay: Character[] = []
 
   #playerDeathEmitter: EventEmitter = new EventEmitter()
   #nightStartEmitter: EventEmitter = new EventEmitter()
   #nightEndEmitter: EventEmitter = new EventEmitter()
-  GameMaster: Player
 
-  constructor(public gameMode: GameMode) {
+  constructor(
+    public gameMode: GameMode,
+    gameMaster: Player
+  ) {
+    this.GameMaster = gameMaster
     //TODO: probably not needed
     // this.code = Math.random().toString(36).substring(2, 7).toUpperCase()
   }
@@ -48,44 +51,5 @@ export class Game {
         player.character instanceof ScarletWoman && player.character.isDemon && player.IsAlive()
       return isDemonAlive || isScarletWomanAliveAndDemon
     })
-  }
-
-  //TODO: perhaps need to implement StartNight() and EndNight() methods
-  sleep() {
-    this.#night++
-  }
-
-  get night(): number {
-    return this.#night
-  }
-
-  // get code(): string {
-  //   return this.#code
-  // }
-
-  set players(players: Player[]) {
-    this.#players = players
-    for (const player of players) {
-      player.game = this
-    }
-    //TODO: should the current game know about the allocation and should we set here the game allocation instead of the gamebuilder?
-  }
-  get players(): Player[] {
-    return this.#players
-  }
-
-  get charactersNotInPlay(): Character[] {
-    return this.#charactersNotInPlay
-  }
-  set charactersNotInPlay(characters: Character[]) {
-    this.#charactersNotInPlay = characters
-  }
-
-  set charactersInPlay(characters: Character[]) {
-    this.#charactersInPlay = characters
-  }
-
-  get charactersInPlay(): Character[] {
-    return this.#charactersInPlay
   }
 }

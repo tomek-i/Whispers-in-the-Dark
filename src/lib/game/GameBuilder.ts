@@ -13,8 +13,8 @@ export class GameBuilder {
   private game: Game
   private availableCharacters: Character[]
 
-  constructor(gameMode: GameMode) {
-    this.game = new Game(gameMode)
+  constructor(gameMode: GameMode, player: Player) {
+    this.game = new Game(gameMode, player)
     this.availableCharacters = gameModeCharacterMap[gameMode]
 
     return this

@@ -3,6 +3,7 @@ import { type VariantProps } from "class-variance-authority"
 
 import { useRouter } from "next/navigation"
 import React, { FormEvent, useState } from "react"
+import signIn from "@/lib/auth/signin"
 import signUp from "@/lib/auth/singup"
 import { RegistrationFormVariants } from "./RegistrationForm.variants"
 
@@ -32,7 +33,9 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({
 
     // else successful
     console.log({ result })
-    return router.push("/login")
+    //TODO: auto login user?
+    await signIn(email, password)
+    return router.push("/dashboard")
   }
   const rgba = "rgba(255,255,255,0.8)"
 

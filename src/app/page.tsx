@@ -1,17 +1,14 @@
 "use client"
 import { Metadata } from "next"
 import { useRouter } from "next/navigation"
-import Pusher from "pusher-js"
-import { useEffect, useRef, useState } from "react"
-import { ToastContainer } from "react-toastify"
-import { GameTitle } from "@/components/GameTitle"
+import { useRef, useState } from "react"
 import { LoginForm } from "@/components/LoginForm"
 import { MainNavigaion } from "@/components/MainNavigaion"
 import { Overlay } from "@/components/Overlay"
 import { RegistrationForm } from "@/components/RegistrationForm"
-import { env } from "@/env/client.env"
 // import { useFirebaseMessaging } from "@/hooks"
-import { Messaging } from "@/lib/game/messages"
+import { usePusherChannel } from "@/hooks/pusherChannel/pusherChannel"
+import { MessageService } from "@/lib/message.service"
 
 // export const metadata: Metadata = {
 //   title: "Whispers in the Dark - Tomek Iwainski",
@@ -32,7 +29,7 @@ import { Messaging } from "@/lib/game/messages"
 
 export default function Web() {
   // useFirebaseMessaging()
-
+  const messages = usePusherChannel("whispers-in-the-dark", "message")
   const [showMessaging, setShowMessaging] = useState(false)
   const [showLoginForm, setShowLoginForm] = useState(false)
   const [showRegistrationForm, setRegistrationForm] = useState(false)
@@ -40,9 +37,7 @@ export default function Web() {
   const router = useRouter()
 
   //TODO: create a hook which returns the pusher instance but also pre-defined channels and or triggers eg. new player joined
-  const [messages, setMessages] = useState<any>([])
   const [newMessage, setNewMessage] = useState("")
-  const [ps, setPs] = useState<Pusher>()
   const [showVideo, setShowVideo] = useState(true)
   const [showVideoOverlay, setShowVideoOverlay] = useState(false)
   const [hideContent, setHideContent] = useState(false)
@@ -54,7 +49,7 @@ export default function Web() {
       // Send the message to Pusher
       // Clear the input field
 
-      Messaging.message(newMessage)
+      MessageService.sendMessage(newMessage)
       setNewMessage("")
     }
   }
@@ -73,28 +68,6 @@ export default function Web() {
       router.push("/dashboard")
     }, 50) // Delay in milliseconds, adjust as needed
   }
-  useEffect(() => {
-    const pusher = new Pusher(env.NEXT_PUBLIC_PUSHER_APP_KEY, {
-      cluster: env.NEXT_PUBLIC_PUSHER_APP_CLUSTER,
-    })
-    setPs(pusher)
-    const channel = pusher.subscribe("whsipers-in-the-dark")
-
-    channel.bind("message", (data: any) => {
-      setMessages((prevMessages: any) => [...prevMessages, data])
-    })
-
-    pusher.connection.bind("error", (err: any) => {
-      console.error(err)
-    })
-    pusher.connection.bind("connected", () => {
-      console.log("Connected to Pusher")
-    })
-
-    return () => {
-      pusher.disconnect()
-    }
-  }, [])
 
   if (hideContent) return <></>
 

@@ -3,6 +3,8 @@ import { type VariantProps } from "class-variance-authority"
 import { signOut } from "firebase/auth"
 import Image from "next/legacy/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { Router } from "next/router"
 import React from "react"
 import { useAuthContext } from "@/context"
 import { firebase } from "@/lib/firebase"
@@ -12,8 +14,9 @@ import { Avatar } from "../Avatar"
 type MainNavigaionProps = {
   disabled?: boolean
 
-  onLoginClick: () => void
-  onSignupClick: () => void
+  onLoginClick?: () => void
+  onSignupClick?: () => void
+  onLogoutClick?: () => void
 } & React.HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof MainNavigaionVariants>
 
@@ -23,12 +26,14 @@ export const MainNavigaion: React.FC<MainNavigaionProps> = ({
   variant = "default",
   onLoginClick,
   onSignupClick,
+  onLogoutClick, //TODO: not currently used
   ...props
 }) => {
   const { user } = useAuthContext()
+  const router = useRouter()
 
   return (
-    <nav className="relative z-50 flex flex-wrap justify-between py-2 text-gray-900 lg:py-4">
+    <nav className="relative z-50 flex flex-wrap justify-between py-2 text-white lg:py-4">
       <div className="px-3">
         <Link href="/">{/* <Avatar src="/shadows-unveiled.jpg" alt="logo" /> */}</Link>
       </div>
@@ -53,12 +58,22 @@ export const MainNavigaion: React.FC<MainNavigaionProps> = ({
               <>
                 <span className="mr-3 cursor-default ">{user.email}</span>
                 <div className="h-10 w-10 rounded-full bg-slate-600 hover:bg-slate-400" />
-                <button onClick={() => signOut(firebase.auth)}>logout</button>
+                <button
+                  onClick={async () => {
+                    await signOut(firebase.auth)
+                    router.push("/")
+                  }}
+                >
+                  logout
+                </button>
               </>
             )}
             {!user && (
               <>
-                <button onClick={onLoginClick} className="rounded bg-slate-100 px-4 py-2 hover:text-primary-600">
+                <button
+                  onClick={onLoginClick}
+                  className="rounded bg-slate-100 px-4 py-2 text-gray-900 hover:text-primary-600"
+                >
                   Login
                 </button>
                 <button

@@ -1,4 +1,4 @@
-export async function post<T>(url: string, data: T) {
+export async function post<T>(url: string, data: unknown): Promise<T> {
   const res = await fetch(url, {
     method: "POST",
     headers: {
@@ -10,5 +10,9 @@ export async function post<T>(url: string, data: T) {
     console.error("failed to POST data")
   }
 
-  return res
+  return (await res.json()) as T
+}
+
+export const http = {
+  post,
 }

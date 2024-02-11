@@ -3,38 +3,43 @@ import { Character } from "./characters"
 import { States } from "./enums"
 import { Game } from "./Game"
 
+type GameUser = {
+  uid: string
+  email: string
+  displayName: string
+}
+
 export class Player {
-  #character?: Character
-  #votes: boolean = true
+  character?: Character
+  votes: boolean = true
   #state: States = States.Default
   game!: Game
-  constructor(public user: User) {}
 
-  get character() {
-    return this.#character!
-  }
-
-  set character(character: Character) {
-    this.#character = character
-    this.#character.player = this
+  user: GameUser
+  constructor(user: User) {
+    this.user = {
+      uid: user.uid,
+      email: user.email!,
+      displayName: user.displayName!,
+    }
   }
 
   IsAlive(): boolean {
     return this.#state !== States.Dead
   }
   UseAbility(target: Player) {
-    if (this.CanUseAbility()) this.#character?.ability.Use(target)
+    if (this.CanUseAbility()) this.character?.ability.Use(target)
   }
   ApplyState(state: States) {
     this.#state = state
   }
 
   CanUseAbility(): boolean {
-    return this.IsAlive() && !this.IsPoisonedOrDrunk() && (this.#character?.CanUseAbility() ?? true)
+    return this.IsAlive() && !this.IsPoisonedOrDrunk() && (this.character?.CanUseAbility() ?? true)
   }
 
   CanVote(): boolean {
-    return this.IsAlive() || (!this.IsAlive() && this.#votes)
+    return this.IsAlive() || (!this.IsAlive() && this.votes)
   }
 
   IsDrunk(): boolean {
@@ -47,7 +52,7 @@ export class Player {
 
   Vote() {
     //NOTE: this is a hack to allow dead characters to vote
-    this.#votes = false
+    this.votes = false
   }
   //TODO: maybe need to implement Die when demon kills the character and Execute when townsfolk kills the character
   Die() {

@@ -13,13 +13,12 @@ export interface GameCreationPayload {
 }
 export async function POST(request: NextRequest) {
   let { id, player } = (await request.json()) as GameCreationPayload
-  if (!id) id = Util.createRandomgameId()
+  if (!id) id = Util.createRandomGameId()
 
-  const game = new Game(GameMode.TroubleBrewing)
+  const game = new Game(GameMode.TroubleBrewing, player)
   game.code = id
   game.GameMaster = player
 
-  console.log("Saving game")
   try {
     await setDoc(doc(firebase.firestore, "games", id), {
       ...game,
@@ -28,7 +27,6 @@ export async function POST(request: NextRequest) {
     console.error(error)
   }
 
-  console.log("OOOOK")
   return Response.json({ status: "ok", id, game })
 }
 
