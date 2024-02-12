@@ -1,6 +1,7 @@
 import { EventEmitter } from "events"
 import { Character } from "./characters"
 import { Demon } from "./characters/demons/Demon"
+import { Baron, ScarletWoman } from "./characters/minions"
 import { GameMode } from "./gameModes"
 import { Player } from "./Player"
 
@@ -12,6 +13,8 @@ export class Game {
   GameMaster: Player
   charactersNotInPlay: Character[] = []
   charactersInPlay: Character[] = []
+
+  createdAt: Date = new Date()
 
   #playerDeathEmitter: EventEmitter = new EventEmitter()
   #nightStartEmitter: EventEmitter = new EventEmitter()
@@ -51,4 +54,37 @@ export class Game {
       return isDemonAlive || isScarletWomanAliveAndDemon
     })
   }
+}
+
+//TODO: extract the below codes into some util class/file
+export const IsDemonAlive = (game: Game): boolean => {
+  return game.players.some((player) => {
+    const isDemonAlive = player.character instanceof Demon && player.IsAlive()
+    const isScarletWomanAliveAndDemon =
+      player.character instanceof ScarletWoman && player.character.isDemon && player.IsAlive()
+    return isDemonAlive || isScarletWomanAliveAndDemon
+  })
+}
+
+export const IsScarletWomanInGame = (game: Game): boolean => {
+  return game.players.some((player) => {
+    return player.character instanceof ScarletWoman
+  })
+}
+
+export const IsBaronInGame = (game: Game): boolean => {
+  return game.players.some((player) => {
+    return player.character instanceof Baron
+  })
+}
+
+/**
+ * @example
+ * isCharacterInGame(game, ScarletWoman);
+ * isCharacterInGame(game, Baron);
+ */
+export const isCharacterInGame = (game: Game, characterType: any): boolean => {
+  return game.players.some((player) => {
+    return player.character instanceof characterType
+  })
 }
