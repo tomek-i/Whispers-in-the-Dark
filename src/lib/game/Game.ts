@@ -1,7 +1,6 @@
 import { EventEmitter } from "events"
 import { Character } from "./characters"
 import { Demon } from "./characters/demons/Demon"
-import { ScarletWoman } from "./characters/minions"
 import { GameMode } from "./gameModes"
 import { Player } from "./Player"
 

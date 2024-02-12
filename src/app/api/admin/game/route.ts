@@ -34,8 +34,6 @@ export async function GET(_: NextRequest) {
   const querySnapshot = await getDocs(q)
   const result: any = []
   querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data())
     result.push(doc.data())
   })
 
