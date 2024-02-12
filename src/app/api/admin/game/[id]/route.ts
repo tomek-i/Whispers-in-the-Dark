@@ -1,5 +1,4 @@
 import { NextRequest } from "next/server"
-import { OK } from "../route"
 
 export async function POST(request: NextRequest, context: any) {
   const { id } = context.params
@@ -9,5 +8,5 @@ export async function POST(request: NextRequest, context: any) {
   //TODO: add player to game
   //TODO: return url to game /game/:id
 
-  return OK({ game: id })
+  return Response.json({ status: "ok", game: id })
 }
