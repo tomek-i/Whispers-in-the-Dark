@@ -1,6 +1,6 @@
 "use client"
-import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
+import { redirect, useRouter } from "next/navigation"
+import { useEffect, useLayoutEffect, useState } from "react"
 import { GameTitle } from "@/components/GameTitle"
 import { useAuthContext } from "@/context"
 import { post } from "@/lib/http"
@@ -13,6 +13,11 @@ export default function DashboardPage() {
     console.log({ player })
     if (user == null) router.push("/")
   }, [router, user])
+
+  useLayoutEffect(() => {
+    console.log("user from layout in dashboard", user)
+    if (!user) redirect("/")
+  }, [user])
 
   return (
     <>
