@@ -13,6 +13,7 @@ export const usePusherChannel = (channelName: string, event: string) => {
     const channel = pusher.subscribe(channelName)
 
     channel.bind(event, (data: any) => {
+      //TODO: maybe the copying causes the thing to be in there twice?
       setMessages((prevMessages: any) => [...prevMessages, data])
     })
 
@@ -24,6 +25,7 @@ export const usePusherChannel = (channelName: string, event: string) => {
     })
 
     return () => {
+      channel.unbind_all()
       pusher.disconnect()
     }
   }, [channelName, event])
