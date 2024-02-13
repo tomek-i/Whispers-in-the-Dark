@@ -25,6 +25,8 @@ const AuthContextProvider: FC<React.PropsWithChildren> = ({ children }) => {
         setPlayer(new Player(user))
       } else {
         setUser(null)
+        setPlayer(null)
+        //TODO: should we redirect the user to login?
       }
       setLoading(false)
     })
