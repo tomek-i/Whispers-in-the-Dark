@@ -1,37 +1,34 @@
 import { type VariantProps } from "class-variance-authority"
-import { clsx } from "clsx"
-import { useRouter } from "next/navigation"
-import React, { FC, FormEvent, PropsWithChildren, useRef, useState } from "react"
-import { twMerge } from "tailwind-merge"
-import signIn from "@/lib/auth/signin"
+import React, { FC, FormEvent, PropsWithChildren, useState } from "react"
+import { toast } from "react-toastify"
+import { http } from "@/lib/http"
+import { AuthService } from "@/services/auth.service"
 import { LoginFormVariants } from "./LoginForm.variants"
-import { Card } from "../Card"
 
 type LoginFormProps = {
-  onFormSubmit: () => void
+  onFormSubmit?: () => void
+  onSuccess?: () => void
 } & React.HTMLAttributes<HTMLDivElement> &
   PropsWithChildren &
   VariantProps<typeof LoginFormVariants>
 
-export const LoginForm: FC<LoginFormProps> = ({ className = "", variant = "default", onFormSubmit, ...props }) => {
+export const LoginForm: FC<LoginFormProps> = ({ onFormSubmit, onSuccess }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const router = useRouter()
-
   const handleForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    onFormSubmit?.()
 
-    const { result, error } = await signIn(email, password)
-
-    if (error) {
-      //TODO: this needs to be a toast properly?
-      return console.log(error)
-    }
-
-    // else successful
-
-    onFormSubmit()
+    const authService = new AuthService()
+    authService.onError((error) => {
+      toast.error(error.message)
+      console.error({ error })
+    })
+    authService.onLoginSuccess(() => {
+      onSuccess?.()
+    })
+    await authService.signIn(email, password)
   }
   const rgba = "rgba(255,255,255,0.8)"
 

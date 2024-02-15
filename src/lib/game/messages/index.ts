@@ -1,4 +1,4 @@
-import { MessageService } from "@/lib/message.service"
+import { MessageService } from "@/services/message.service"
 import { Player } from "../Player"
 
 export type PlayerJoinedEventData = {

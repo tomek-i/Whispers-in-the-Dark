@@ -20,6 +20,20 @@ export class Game {
   #nightStartEmitter: EventEmitter = new EventEmitter()
   #nightEndEmitter: EventEmitter = new EventEmitter()
 
+  toPlain() {
+    return {
+      code: this.code,
+      night: this.night,
+      players: [],
+      gameMaster: {
+        id: this.GameMaster.user.uid,
+        name: this.GameMaster.user.displayName,
+        email: this.GameMaster.user.email,
+      },
+      createdAt: this.createdAt,
+    }
+  }
+
   constructor(
     public gameMode: GameMode,
     gameMaster: Player

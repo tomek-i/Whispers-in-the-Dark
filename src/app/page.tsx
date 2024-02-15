@@ -1,16 +1,12 @@
 "use client"
-import { Metadata } from "next"
+// import { Metadata } from "next"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import { toast } from "react-toastify"
 import { GameTitle } from "@/components/GameTitle"
 import { LoginForm } from "@/components/LoginForm"
 import { MainNavigaion } from "@/components/MainNavigaion"
 import { Overlay } from "@/components/Overlay"
 import { RegistrationForm } from "@/components/RegistrationForm"
-// import { useFirebaseMessaging } from "@/hooks"
-import { usePusherChannel } from "@/hooks/pusherChannel/pusherChannel"
-import { MessageService } from "@/lib/message.service"
 
 // export const metadata: Metadata = {
 //   title: "Whispers in the Dark - Tomek Iwainski",
@@ -30,77 +26,51 @@ import { MessageService } from "@/lib/message.service"
 // }
 
 export default function Web() {
+  const router = useRouter()
   // useFirebaseMessaging()
-  const messages = usePusherChannel("whispers-in-the-dark", "message")
-  const [showMessaging, setShowMessaging] = useState(false)
   const [showLoginForm, setShowLoginForm] = useState(false)
   const [showRegistrationForm, setRegistrationForm] = useState(false)
 
-  const router = useRouter()
-
-  //TODO: create a hook which returns the pusher instance but also pre-defined channels and or triggers eg. new player joined
-  const [newMessage, setNewMessage] = useState("")
-  const [hideContent, setHideContent] = useState(false)
-
-  const handleSendMessage = () => {
-    if (newMessage.trim() !== "") {
-      // Send the message to Pusher
-      // Clear the input field
-
-      MessageService.sendMessage(newMessage)
-      setNewMessage("")
-    }
+  const handleOnLoginClick = () => {
+    setRegistrationForm(false)
+    setShowLoginForm(true)
   }
-
+  const handleOnSignupClick = () => {
+    setShowLoginForm(false)
+    setRegistrationForm(true)
+  }
   return (
     <>
-      <MainNavigaion
-        onLoginClick={() => {
-          console.log("LoginCLickedd")
-          setRegistrationForm(false)
-          setShowLoginForm(true)
-        }}
-        onSignupClick={() => {
-          setShowLoginForm(false)
-          setRegistrationForm(true)
-        }}
-      />
+      <div className="flex w-full justify-end space-x-4">
+        <button
+          onClick={handleOnLoginClick}
+          className="rounded bg-slate-100 px-4 py-2 text-gray-900 hover:text-primary-600"
+        >
+          Login
+        </button>
+        <button
+          onClick={handleOnSignupClick}
+          className="rounded bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 "
+        >
+          Sign up for free
+        </button>
+      </div>
 
-      {showMessaging && (
-        <>
-          <div className="messages">
-            {messages.map((message: any, index: number) => (
-              <pre key={index}>{JSON.stringify(message)}</pre>
-            ))}
-          </div>
-          <div className="message-input">
-            <input
-              type="text"
-              className="text-black"
-              value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
-              placeholder="Enter your message..."
-            />
-            <button onClick={handleSendMessage}>Send</button>
-          </div>
-        </>
-      )}
-      <section className={``}>
+      <section>
         <div className="mx-auto max-w-screen-xl text-center">
           <div className="mx-auto flex flex-col items-center place-self-center text-center align-middle">
             <GameTitle />
             {(showRegistrationForm || showLoginForm) && <Overlay />}
             {showLoginForm && (
               <LoginForm
-                onFormSubmit={() => {
-                  setShowLoginForm(false)
-                  //TODO: how do we know that his was successfull?
+                onSuccess={() => {
+                  console.log("login success")
+                  //TODO: should we set here the user in the context?
                   router.push("/dashboard")
                 }}
               />
             )}
             {showRegistrationForm && <RegistrationForm />}
-            <div onClick={() => toast.success("test")}> TOAST Exxample</div>
           </div>
         </div>
       </section>

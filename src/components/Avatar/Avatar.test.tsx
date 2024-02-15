@@ -1,7 +1,7 @@
-import { Avatar } from "components/Avatar"
 import { render, screen } from "@testing-library/react"
+import { Avatar } from "./Avatar"
 
 test("renders", () => {
-    render(<Avatar />)
-    expect(screen.getByText("Avatar")).toBeInTheDocument()
+  render(<Avatar src={""} alt={""} />)
+  expect(screen.getByText("Avatar")).toBeInTheDocument()
 })

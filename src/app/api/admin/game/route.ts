@@ -1,16 +1,14 @@
-import { collection, doc, getDoc, getDocs, query, setDoc } from "firebase/firestore"
+import { collection, doc, getDocs, query, setDoc } from "firebase/firestore"
 import { NextRequest } from "next/server"
 import { firebase } from "@/lib/firebase"
 import { createTroubleBrewingGame } from "@/lib/game"
-import { Game } from "@/lib/game/Game"
-import { GameMode } from "@/lib/game/gameModes"
 import { Player } from "@/lib/game/Player"
-import { Util } from "@/lib/util"
 
 export interface GameCreationPayload {
   id?: string
   player: Player
 }
+
 export async function POST(request: NextRequest) {
   let { player } = (await request.json()) as GameCreationPayload
 

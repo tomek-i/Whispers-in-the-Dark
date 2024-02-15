@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server"
 import { PlayerJoinedEventData } from "@/lib/game/messages"
-import { EventMessage } from "@/lib/message.service"
 import { pusher } from "@/lib/pusher"
+import { EventMessage } from "@/services/message.service"
 
 export async function POST(request: NextRequest) {
   //TODO: this seems to be recieved twice
@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
 
   if (eventMessage.event === "player-joined") {
     //TODO: for some reason sender is null need to fix this up
-    const { channel, data, event, sender } = eventMessage as unknown as EventMessage<PlayerJoinedEventData>
+    const { channel, data, event } = eventMessage as unknown as EventMessage<PlayerJoinedEventData>
     //TODO: need to fix up the channel name on player-joined message
     await pusher.trigger("game-" + channel, event, data.player.user.displayName + " has joined the game")
   }
@@ -33,9 +33,9 @@ export async function POST(request: NextRequest) {
   return Response.json({ status: 204 })
 }
 
-function OK(data: any) {
-  return new Response(JSON.stringify({ error: null, data }), {
-    headers: { "Content-Type": "application/json" },
-    status: 200,
-  })
-}
+// function OK(data: any) {
+//   return new Response(JSON.stringify({ error: null, data }), {
+//     headers: { "Content-Type": "application/json" },
+//     status: 200,
+//   })
+// }

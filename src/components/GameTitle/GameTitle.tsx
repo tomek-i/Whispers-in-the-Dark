@@ -1,8 +1,6 @@
 import { type VariantProps } from "class-variance-authority"
-import { clsx } from "clsx"
-import { Homemade_Apple, Nosifer, Zeyada } from "next/font/google"
+import { Nosifer, Zeyada } from "next/font/google"
 import React from "react"
-import { twMerge } from "tailwind-merge"
 import { GameTitleVariants } from "./GameTitle.variants"
 
 const zeyada = Zeyada({
@@ -17,12 +15,7 @@ const nosifer = Nosifer({
 type GameTitleProps = { disabled?: false } & React.HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof GameTitleVariants>
 
-export const GameTitle: React.FC<GameTitleProps> = ({
-  className = "",
-  size = "default",
-  variant = "default",
-  ...props
-}) => {
+export const GameTitle: React.FC<GameTitleProps> = ({ className = "" }) => {
   // return <div className={twMerge(clsx(GameTitleVariants({ variant, size, className })))} {...props}></div>
 
   return (

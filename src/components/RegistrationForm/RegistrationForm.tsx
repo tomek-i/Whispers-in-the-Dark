@@ -1,41 +1,34 @@
 "use client"
 import { type VariantProps } from "class-variance-authority"
-
 import { useRouter } from "next/navigation"
 import React, { FormEvent, useState } from "react"
-import signIn from "@/lib/auth/signin"
-import signUp from "@/lib/auth/singup"
+import { toast } from "react-toastify"
+import { AuthService } from "@/services/auth.service"
+import { UserService } from "@/services/user.service"
 import { RegistrationFormVariants } from "./RegistrationForm.variants"
 
 type RegistrationFormProps = { disabled?: false } & React.HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof RegistrationFormVariants>
 
-export const RegistrationForm: React.FC<RegistrationFormProps> = ({
-  className = "",
-  size = "default",
-  variant = "default",
-  ...props
-}) => {
+export const RegistrationForm: React.FC<RegistrationFormProps> = () => {
+  const router = useRouter()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [playerName, setPlayerName] = useState("")
 
-  const router = useRouter()
   // return <div className={twMerge(clsx(RegistrationFormVariants({ variant, size, className })))} {...props}></div>
   const handleForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const { result, error } = await signUp(email, password, playerName)
-
-    if (error) {
-      return console.log(error)
-    }
-
-    // else successful
-    console.log({ result })
-    //TODO: auto login user?
-    await signIn(email, password)
-    return router.push("/dashboard")
+    //TODO: add post request to register
+    const authService = new AuthService()
+    authService.onSignUpSuccess(async (user) => {
+      toast.success("Signed up successfully!")
+      const userService = new UserService()
+      await userService.createProfile(user, playerName)
+      router.push("/dashboard")
+    })
+    await authService.signUp(email, password)
   }
   const rgba = "rgba(255,255,255,0.8)"
 

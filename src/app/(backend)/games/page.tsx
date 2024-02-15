@@ -2,45 +2,65 @@
 
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { Card } from "@/components/Card"
 import { Game } from "@/lib/game/Game"
-import { http } from "@/lib/http"
-
-type GameListResponse = {
-  status: string
-  games: Games
-}
-type Games = {
-  [key: string]: string
-}
+import { GameService } from "@/services/game.service"
 
 export default function GamesPage() {
   const [games, setGames] = useState<Game[]>()
 
   const loadAllGames = async () => {
-    const response = await http.get<any>("/api/admin/game")
-
-    setGames(response.games as Game[])
+    const gameService = new GameService()
+    const games = await gameService.getGames()
+    setGames(games ?? [])
+    // const response = await http.get<any>("/api/admin/game")
+    // setGames(response.games as Game[])
   }
+
   useEffect(() => {
     loadAllGames()
   }, [])
 
   return (
-    <div className="flex w-auto flex-col space-y-4 text-slate-900">
-      {games?.map((game) => {
-        return (
-          <Card key={game.code}>
-            {game.code} {"=>"} {game.gameMode}
-            <pre>Night: {game.night}</pre>
-            <pre>Players: {game.players.length}</pre>
-            <pre>Created: null</pre>
-            <button className="rounded bg-slate-500 px-4 py-2 ">
-              <Link href={`/game/${game.code}`}>Join game {game.code}</Link>
+    <table className="mx-auto table-auto bg-white text-black">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Game Mode</th>
+          <th>Night</th>
+          <th>Players</th>
+          <th>Created</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr key="replace with game id">
+          <td>game id</td>
+          <td>game mode</td>
+          <td>nights</td>
+          <td>amount of players</td>
+          <td>date created</td>
+          <td className="item flex justify-center">
+            <button className="m-2 rounded bg-blue-700 px-4 py-2 uppercase text-white">
+              <Link href={`/game/replac with game id`}>JOIN</Link>
             </button>
-          </Card>
-        )
-      })}
-    </div>
+          </td>
+        </tr>
+
+        {games?.map((game) => (
+          <tr key={game.code}>
+            <td>{game.code}</td>
+            <td>{game.gameMode}</td>
+            <td>{game.night}</td>
+            <td>{game.players.length}</td>
+            <td>{game.createdAt.toISOString()}</td>
+            <td className="item flex justify-center">
+              <button className="m-2 rounded bg-blue-700 px-4 py-2 uppercase text-white">
+                <Link href={`/game/replac with game id`}>JOIN</Link>
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   )
 }

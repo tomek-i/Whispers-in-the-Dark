@@ -1,14 +1,13 @@
 "use client"
-import { useAuthContext } from "@/context"
-import { env } from "@/env/client.env"
-import { firebase } from "@/lib/firebase"
 import { getMessaging, getToken, onMessage } from "firebase/messaging"
 import { useEffect, useState } from "react"
 import { toast } from "react-toastify"
+import { env } from "@/env/client.env"
+import { firebase } from "@/lib/firebase"
 
 export const useFirebaseMessaging = () => {
   // const { user } = useAuthContext() // get the user from your UserContext
-  const [token, setToken] = useState<string>()
+  const [_, setToken] = useState<string>()
 
   useEffect(
     () => {
@@ -48,5 +47,5 @@ export const useFirebaseMessaging = () => {
       toast(message.notification?.body)
       console.log({ message })
     })
-  }, [firebase.messaging])
+  }, [])
 }
